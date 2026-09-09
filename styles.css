@@ -526,10 +526,10 @@ button {
 }
 
 .hero-title {
-  font-size: clamp(2.1rem, 3.8vw, 3.5rem);
+  font-size: clamp(1.85rem, 3.2vw, 3.1rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.18;
   color: var(--text);
   margin-bottom: 20px;
   max-width: 100%;
