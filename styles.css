@@ -251,7 +251,7 @@ button {
   align-items: center;
   justify-content: space-between;
   height: 72px;
-  gap: 24px;
+  gap: clamp(10px, 1.4vw, 24px);
 }
 .brand-logo {
   display: flex;
@@ -293,19 +293,22 @@ button {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: clamp(8px, 1.15vw, 20px);
   flex: 1;
   justify-content: center;
+  min-width: 0;
 }
 .nav-link {
-  font-size: 0.88rem;
+  font-size: clamp(0.8rem, 0.86vw, 0.88rem);
   font-weight: 500;
   color: var(--text-muted);
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .nav-link::after {
-  content: '\;
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -326,7 +329,13 @@ button {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(6px, 0.9vw, 12px);
+  flex-shrink: 0;
+}
+@media (max-width: 1240px) {
+  .header-actions .btn-ghost {
+    display: none;
+  }
 }
 .lang-switcher {
   display: inline-flex;
@@ -1637,7 +1646,7 @@ button {
   .diagram-canvas-svg { min-width: 750px; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .header-actions { display: none; }
   .mobile-toggle {
     display: flex;
