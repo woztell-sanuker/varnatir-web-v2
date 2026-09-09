@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solución & Arquitectura · VARNATIR</title>
+  
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800,900&f[]=jetbrains-mono@400,500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <span class="pulse-dot"></span>
+      <span class="top-bar-text">Fundamento científico CIBEC 2023: <strong>Gobernar la conversación, no el canal</strong></span>
+      <a href="catedra.html" class="top-bar-link">Ver investigación &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="navbar">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-symbol"></span>
+        <span class="logo-text">VARNATIR</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="solution.html" class="nav-link active" style="color: var(--accent);">Solución</a>
+        <a href="ia.html" class="nav-link">IA & Soberanía</a>
+        <a href="industries.html" class="nav-link">Industrias</a>
+        <a href="compliance.html" class="nav-link">Compliance</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="openModal('Solución General')">Desbloquear un flujo</button>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Solución -->
+  <section class="hero-section" style="padding: 70px 0 60px;">
+    <div class="hero-radial-glow"></div>
+    <div class="container hero-container">
+      <div class="eyebrow-wrapper">
+        <span class="badge-kicker">CONTROL DE VUELO VS. CAJA NEGRA</span>
+      </div>
+      <h1 class="hero-title active" style="max-width: 960px;">
+        La arquitectura de intervención en origen.<br />
+        <span class="text-gradient">Gobernar antes de entregar, no archivar después.</span>
+      </h1>
+      <p class="hero-subhead" style="max-width: 780px;">
+        Las herramientas tradicionales de compliance (DCGA) solo guardan una copia forense cuando el mensaje ya está en el móvil del destinatario. VARNATIR evalúa, anonimiza y decide en el milisegundo previo a la entrega.
+      </p>
+    </div>
+  </section>
+
+  <!-- How It Runs: The 4-Step Pipeline -->
+  <section class="section-container bg-surface-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker text-accent">CÓMO OPERA EL CIRCUITO</span>
+        <h2 class="section-h2">El viaje de un mensaje bajo gobierno activo</h2>
+        <p class="section-lead">
+          De la aplicación del empleado a los sistemas centrales sin que el usuario externo perciba fricción ni requiera instalación.
+        </p>
+      </div>
+
+      <div class="pipeline-flow">
+        <div class="flow-step">
+          <div class="step-num">Paso 01</div>
+          <div class="step-title">Captura por Coexistencia</div>
+          <div class="step-desc">El empleado envía desde su número corporativo en WhatsApp oficial. El motor dual captura el evento sin alterar su experiencia.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step highlight">
+          <div class="step-num">Paso 02</div>
+          <div class="step-title">Evaluación de Contenido</div>
+          <div class="step-desc">Inspección de datos sensibles, PII, enlaces y políticas corporativas. Aplicación inmediata de reglas de moderación.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="step-num">Paso 03</div>
+          <div class="step-title">Decisión de Enrutamiento</div>
+          <div class="step-desc">¿Es un trámite sensible? Salta a sala acotada efímera. ¿Es estándar? Se entrega firmado y registrado en el canal.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="step-num">Paso 04</div>
+          <div class="step-title">Modelo Propio & Custodia</div>
+          <div class="step-desc">La conversación se guarda como un objeto con ciclo de vida, trazabilidad y clave por organización.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 6 Forms of Managed Communication (from Thesis CIBEC) -->
+  <section class="section-container">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker">LAS SEIS FORMAS CANÓNICAS</span>
+        <h2 class="section-h2">Un repertorio completo para cada situación crítica</h2>
+        <p class="section-lead">
+          Ninguna forma es la principal: cada una resuelve una necesidad operativa que las otras no alcanzan.
+        </p>
+      </div>
+
+      <div class="model-cards-grid">
+        <div class="model-card">
+          <div class="card-tag">Forma 01</div>
+          <h3 class="card-title">Salto a Canal Propio Efímero</h3>
+          <p class="card-desc">
+            Cuando la conversación exige secreto profesional o confidencialidad crítica, el enlace abre una sala web segura con voz, vídeo y clave efímera destruida al cerrar.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <div class="card-tag">Forma 02</div>
+          <h3 class="card-title">IA Intermedia: Moderación Activa</h3>
+          <p class="card-desc">
+            Filtro multicanal de enlaces maliciosos, lenguaje hostil y detección preventiva de fuga de datos en origen antes de que el texto salga de la organización.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <div class="card-tag">Forma 03</div>
+          <h3 class="card-title">IA Intermedia: Agente Lateral</h3>
+          <p class="card-desc">
+            Copiloto de IA que asiste al agente humano en tiempo real, sugiere respuestas fundamentadas en la base de conocimiento y redacta sin exponer PII.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <div class="card-tag">Forma 04</div>
+          <h3 class="card-title">Resolución Híbrida (Bot & Humano)</h3>
+          <p class="card-desc">
+            Sustitución fluida de automatismo por agente humano con traspaso de contexto completo sobre el mismo número e hilo único de conversación.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <div class="card-tag">Forma 05</div>
+          <h3 class="card-title">Multiplexor de IA (BYOK)</h3>
+          <p class="card-desc">
+            Enrutamiento dinámico de peticiones entre múltiples proveedores de modelos (Claude, Gemini, OpenAI, modelos locales) usando las claves propias del cliente.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <div class="card-tag">Forma 06</div>
+          <h3 class="card-title">Captura por Coexistencia Dual</h3>
+          <p class="card-desc">
+            La palanca democratizadora: extiende el gobierno corporativo al número de teléfono existente del empleado sin exigir que cambie de dispositivo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Deploy: SaaS vs PaaS vs Misión Crítica -->
+  <section class="section-container bg-surface-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker text-accent">DESPLIEGUE FLEXIBLE</span>
+        <h2 class="section-h2">Modalidades adaptadas a tu gobierno de TI</h2>
+        <p class="section-lead">
+          Desde despliegue inmediato en la nube europea hasta instancias dedicadas para el sector público y seguridad.
+        </p>
+      </div>
+
+      <div class="deploy-grid">
+        <div class="deploy-card" style="padding: 36px 28px;">
+          <span class="badge-deploy">Cloud / SaaS</span>
+          <h4 style="font-size: 1.4rem; margin: 12px 0;">VARNATIR Cloud</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            Alojamiento en infraestructura europea conforme a RGPD y ENS Media. Multi-organización con unidad de aislamiento estricta por cliente. Activación en 24 horas.
+          </p>
+          <ul class="pricing-features" style="margin-bottom: 24px; font-size: 0.85rem;">
+            <li>✓ Aislamiento lógico de datos y claves</li>
+            <li>✓ Actualizaciones de políticas y filtros automáticos</li>
+            <li>✓ SLA 99.9% de disponibilidad</li>
+          </ul>
+          <button class="btn btn-secondary btn-block" onclick="openModal('Cloud SaaS')">Solicitar acceso Cloud</button>
+        </div>
+
+        <div class="deploy-card" style="padding: 36px 28px; border-color: var(--accent);">
+          <span class="badge-deploy" style="background: var(--accent-dim); color: var(--accent);">PaaS / Dedicated</span>
+          <h4 style="font-size: 1.4rem; margin: 12px 0;">VARNATIR Dedicated</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            Instalación en la suscripción de nube o nube privada virtual (VPC) de tu organización (AWS, Google Cloud o Azure). Control estricto de claves (BYOK).
+          </p>
+          <ul class="pricing-features" style="margin-bottom: 24px; font-size: 0.85rem;">
+            <li>✓ Despliegue en tu VPC / Jurisdicción soberana</li>
+            <li>✓ Gestión de llaves por tu equipo (BYOK)</li>
+            <li>✓ Conexión directa a tus ERPs y cores transaccionales</li>
+          </ul>
+          <button class="btn btn-primary btn-block" onclick="openModal('Dedicated PaaS')">Consultar con Arquitectura</button>
+        </div>
+
+        <div class="deploy-card" style="padding: 36px 28px;">
+          <span class="badge-deploy">Misión Crítica</span>
+          <h4 style="font-size: 1.4rem; margin: 12px 0;">Misión Crítica & FFCSE</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            Para fuerzas de seguridad, defensa y sanidad con exigencias de infraestructura soberana nacional y aislamiento total de red.
+          </p>
+          <ul class="pricing-features" style="margin-bottom: 24px; font-size: 0.85rem;">
+            <li>✓ Diseñado conforme a ENS Media</li>
+            <li>✓ Soporte para salas acotadas efímeras tácticas</li>
+            <li>✓ Auditoría y certificación de seguridad personalizada</li>
+          </ul>
+          <button class="btn btn-secondary btn-block" onclick="openModal('Misión Crítica')">Contactar área Seguridad</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-banner-section">
+    <div class="container">
+      <div class="cta-banner-inner">
+        <span class="cta-badge">ARQUITECTURA DE ORIGEN</span>
+        <h2 class="cta-h2">Gobernanza activa lista para tu primer flujo</h2>
+        <p class="cta-subhead">Desbloquea el canal donde ya operan tus clientes con la certeza técnica que exige tu CISO.</p>
+        <div class="cta-buttons">
+          <button class="btn btn-primary btn-lg" onclick="openModal('CTA Solución')">Desbloquear un flujo sensible</button>
+          <a href="ia.html" class="btn btn-ghost btn-lg">Ver arquitectura de IA &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <span class="logo-symbol"></span>
+          <span class="logo-text">VARNATIR</span>
+        </a>
+        <p class="footer-tagline">
+          Gobernar la conversación, no el canal.<br />
+          Plataforma conversacional gestionada para conversaciones sensibles.
+        </p>
+        <div class="partner-meta">
+          <span>Woztell Sanuker · Solution Partner de Meta</span>
+        </div>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Plataforma</h5>
+        <a href="solution.html">Control de Vuelo</a>
+        <a href="ia.html">IA & Anonimización</a>
+        <a href="compliance.html">Esquema ENS Media</a>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Industrias</h5>
+        <a href="industries-enterprise.html">Enterprise</a>
+        <a href="industries-govtech.html">Govtech & Local</a>
+        <a href="industries-defensa.html">Defensa & FFCSE</a>
+        <a href="pricing.html">Pricing & Democratización</a>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Investigación</h5>
+        <a href="catedra.html">Cátedra CBC-UV</a>
+        <a href="catedra.html">Tesis CIBEC 2023</a>
+        <a href="https://github.com/ebarcos" target="_blank" rel="noopener">Perímetro GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-legal">
+        <span>&copy; 2026 VARNATIR · Todos los derechos reservados.</span>
+        <span>Aviso Legal</span>
+        <span>Privacidad & RGPD</span>
+      </div>
+      <div class="footer-governance">
+        <span>Confidencial · noindex, nofollow</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Modal -->
+  <div class="modal-overlay" id="cta-modal" aria-hidden="true">
+    <div class="modal-window">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-header">
+        <span class="badge-kicker text-accent">PILOTO ACOTADO</span>
+        <h3>Desbloquear un flujo sensible</h3>
+        <p>Selecciona el caso que tu comité de riesgo ha frenado y diseñaremos un piloto sobre el terreno.</p>
+      </div>
+
+      <form class="modal-form" id="pilot-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="form-name">Nombre y Apellidos</label>
+          <input type="text" id="form-name" required placeholder="Ej. Enrique Barcos" />
+        </div>
+
+        <div class="form-group">
+          <label for="form-email">Correo Corporativo</label>
+          <input type="email" id="form-email" required placeholder="tu-nombre@empresa.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="form-sector">Sector / Ámbito</label>
+          <select id="form-sector" required>
+            <option value="" disabled selected>Selecciona tu sector</option>
+            <option value="enterprise-banca">Empresa · Banca & Finanzas</option>
+            <option value="enterprise-seguros">Empresa · Seguros</option>
+            <option value="enterprise-salud">Empresa · Salud & Clínicas</option>
+            <option value="enterprise-retail">Empresa · Retail & Transaccional</option>
+            <option value="govtech-aapp">Govtech · Administración Pública / Autonómica</option>
+            <option value="govtech-local">Govtech · Administración Local (Ayuntamientos)</option>
+            <option value="defensa-ffcse">Defensa / Policía / FFCSE / Emergencias</option>
+            <option value="otro">Otro sector sensible</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="form-case">¿Qué conversación o trámite necesitas gobernar?</label>
+          <textarea id="form-case" rows="3" placeholder="Ej. Autorización de transferencias o atención al ciudadano por WhatsApp sin exponer PII"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-btn">
+          Solicitar piloto de gobernanza
+        </button>
+
+        <div class="form-notice">
+          🔒 Tus datos viajan cifrados y no se ceden a terceros. Cumplimiento estricto RGPD.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

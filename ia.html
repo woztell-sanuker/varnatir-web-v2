@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA & Soberanía del Dato · VARNATIR</title>
+  
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800,900&f[]=jetbrains-mono@400,500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <span class="pulse-dot"></span>
+      <span class="top-bar-text">Fundamento científico CIBEC 2023: <strong>Gobernar la conversación, no el canal</strong></span>
+      <a href="catedra.html" class="top-bar-link">Ver investigación &rarr;</a>
+    </div>
+  </div>
+
+  <header class="site-header" id="navbar">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-symbol"></span>
+        <span class="logo-text">VARNATIR</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="solution.html" class="nav-link">Solución</a>
+        <a href="ia.html" class="nav-link active" style="color: var(--accent);">IA & Soberanía</a>
+        <a href="industries.html" class="nav-link">Industrias</a>
+        <a href="compliance.html" class="nav-link">Compliance</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="openModal('IA & Soberanía')">Desbloquear un flujo</button>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero-section" style="padding: 70px 0 60px;">
+    <div class="hero-radial-glow"></div>
+    <div class="container hero-container">
+      <div class="eyebrow-wrapper">
+        <span class="badge-kicker">INTELIGENCIA ARTIFICIAL PRODUCTIVA</span>
+      </div>
+      <h1 class="hero-title active" style="max-width: 980px;">
+        Aplica IA sobre tus conversaciones críticas.<br />
+        <span class="text-gradient">Sin ceder el control de tus datos.</span>
+      </h1>
+      <p class="hero-subhead" style="max-width: 780px;">
+        Los comités de riesgo frenan la IA porque temen que los modelos comerciales expongan secretos corporativos o datos personales. VARNATIR interpone una capa de intermediación aislada que anonimiza en origen y custodia la soberanía del dato.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Terminal Simulator -->
+  <section class="section-container bg-surface-alt">
+    <div class="container">
+      <div class="split-layout">
+        <div class="split-copy">
+          <span class="section-kicker text-accent">INTERMEDIACIÓN EN MILISEGUNDOS</span>
+          <h2 class="section-h2">Anonimización previa al modelo: Cómo funciona</h2>
+          <p class="section-lead">
+            El texto que redacta o envía tu cliente nunca viaja en crudo al proveedor de IA. VARNATIR sustituye los datos sensibles por identificadores efímeros antes de invocar la inferencia.
+          </p>
+          <ul class="feature-bullets">
+            <li>
+              <strong>Detección determinista de PII:</strong> Nombres, DNIs, cuentas bancarias, teléfonos e información clínica son interceptados en la puerta de enlace.
+            </li>
+            <li>
+              <strong>Inferencia sobre contexto sanitizado:</strong> El modelo de lenguaje razona, clasifica y propone la respuesta utilizando exclusivamente el contexto anonimizado.
+            </li>
+            <li>
+              <strong>Re-hidratación local segura:</strong> Al recibir la respuesta del LLM, VARNATIR recompone el mensaje con los datos reales en el perímetro seguro del cliente antes de la entrega final.
+            </li>
+          </ul>
+
+          <div class="canonical-footnote" style="margin-top: 24px;">
+            * <strong>Nota canónica obligatoria:</strong> No expone PII. Datos anonimizados antes de llegar al modelo. La clave y la custodia de la información permanecen en todo momento bajo el control de tu organización.
+          </div>
+        </div>
+
+        <div class="split-visual">
+          <div class="terminal-card">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">pipeline-anonimizacion-realtime.log</span>
+            </div>
+            <div class="terminal-body" style="font-size: 0.8rem; line-height: 1.7;">
+              <div class="log-line"><span class="log-tag">[00:00.012]</span> Mensaje entrante: "Soy María Gómez, DNI 48291038X. Confirmo cambio de IBAN a ES91 2100 0418..."</div>
+              <div class="log-line text-warn"><span class="log-tag">[00:00.018]</span> DISPATCHER: Detección PII activa (Nombre + DNI + IBAN).</div>
+              <div class="log-line text-accent"><span class="log-tag">[00:00.024]</span> MASK: Generando tokens volátiles [USER_REF_104], [DOC_ID_99], [ACCOUNT_ID_32].</div>
+              <div class="log-line"><span class="log-tag">[00:00.035]</span> LLM_GATEWAY: Enviando prompt al modelo seleccionado (BYOK):</div>
+              <div class="log-line" style="color: var(--text-faint); padding-left: 12px; border-left: 2px solid var(--border);">"El usuario [USER_REF_104] solicita modificación de [ACCOUNT_ID_32]. Clasificar intención y comprobar requisitos de seguridad."</div>
+              <div class="log-line text-accent"><span class="log-tag">[00:00.180]</span> LLM_RESPONSE: Intención = 'BANKING_UPDATE'. Política = 'REQUIRES_2FA'.</div>
+              <div class="log-line text-green"><span class="log-tag">[00:00.192]</span> REHYDRATE: Aplicando plantilla segura con datos locales cifrados.</div>
+              <div class="log-line text-green"><span class="log-tag">[00:00.205]</span> ENTREGA: Mensaje formal emitido a María Gómez vía WhatsApp. Cero PII compartida con el proveedor de IA.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multiplexor BYOK -->
+  <section class="section-container">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker">INDEPENDENCIA TECNOLÓGICA</span>
+        <h2 class="section-h2">Multiplexor de IA: Trae tu propia clave (BYOK)</h2>
+        <p class="section-lead">
+          No te atamos a un único proveedor de IA. Con VARNATIR puedes alternar entre proveedores de vanguardia o modelos locales soberanos según la sensibilidad del trámite.
+        </p>
+      </div>
+
+      <div class="model-cards-grid">
+        <div class="model-card">
+          <div class="card-tag">Proveedor 01</div>
+          <h3 class="card-title">Modelos Comerciales Avanzados</h3>
+          <p class="card-desc">
+            Conéctate a Claude, Gemini o GPT mediante tu propia clave de API corporativa (BYOK). Toda la potencia de los modelos fundacionales con la garantía previa de anonimización en origen.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <div class="card-tag">Proveedor 02</div>
+          <h3 class="card-title">Modelos Locales Soberanos</h3>
+          <p class="card-desc">
+            Para Administraciones Públicas y Defensa con mandato de soberanía territorial: enrutamiento a modelos de código abierto alojados en tu propia infraestructura o servidores nacionales.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <div class="card-tag">Proveedor 03</div>
+          <h3 class="card-title">Enrutamiento por Sensibilidad</h3>
+          <p class="card-desc">
+            Reglas de despacho dinámico: las consultas ordinarias van a modelos rápidos de bajo coste; las operaciones financieras o legales se dirigen a pipelines de máxima rigurosidad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agente Lateral -->
+  <section class="section-container bg-surface-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-kicker text-accent">COPILOTO OPERATIVO</span>
+        <h2 class="section-h2">El Agente Lateral: Asistencia en tiempo real sin descontrol</h2>
+        <p class="section-lead">
+          La IA no sustituye al empleado en decisiones delicadas: lo asiste sobre el mismo hilo conversacional, proponiendo respuestas y validando políticas antes del envío.
+        </p>
+      </div>
+
+      <div class="compliance-matrix">
+        <div class="comp-col">
+          <div class="comp-header">
+            <h4>Búsqueda en Base de Conocimiento</h4>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            El agente lateral indexa tus normativas, procedimientos y manuales internos. Cuando un cliente o ciudadano formula una consulta compleja, redacta borradores fundamentados citando la fuente interna exacta.
+          </p>
+        </div>
+
+        <div class="comp-col">
+          <div class="comp-header">
+            <h4>Verificación de Políticas Previas</h4>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            Antes de que el operador humano pulse enviar, el agente lateral revisa si el texto cumple con la política de comunicación, si promete plazos indebidos o si incluye información confidencial no autorizada.
+          </p>
+        </div>
+
+        <div class="comp-col">
+          <div class="comp-header">
+            <h4>Memoria de Ámbito Estricta</h4>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            La memoria del agente está acotada al expediente o conversación activa. No hay contaminación cruzada de historiales entre clientes ni reutilización de datos para reentrenar modelos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner-section">
+    <div class="container">
+      <div class="cta-banner-inner">
+        <span class="cta-badge">SOBERANÍA DEL DATO</span>
+        <h2 class="cta-h2">Pon la IA a trabajar en tus canales reales</h2>
+        <p class="cta-subhead">Convierte el canal de mensajería en un motor de operaciones inteligente con la garantía de que tu dato nunca queda expuesto.</p>
+        <div class="cta-buttons">
+          <button class="btn btn-primary btn-lg" onclick="openModal('IA Piloto')">Desbloquear un flujo con IA</button>
+          <a href="compliance.html" class="btn btn-ghost btn-lg">Ver cumplimiento ENS Media &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand-logo">
+          <span class="logo-symbol"></span>
+          <span class="logo-text">VARNATIR</span>
+        </a>
+        <p class="footer-tagline">
+          Gobernar la conversación, no el canal.<br />
+          Plataforma conversacional gestionada para conversaciones sensibles.
+        </p>
+        <div class="partner-meta">
+          <span>Woztell Sanuker · Solution Partner de Meta</span>
+        </div>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Plataforma</h5>
+        <a href="solution.html">Control de Vuelo</a>
+        <a href="ia.html">IA & Anonimización</a>
+        <a href="compliance.html">Esquema ENS Media</a>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Industrias</h5>
+        <a href="industries-enterprise.html">Enterprise</a>
+        <a href="industries-govtech.html">Govtech & Local</a>
+        <a href="industries-defensa.html">Defensa & FFCSE</a>
+        <a href="pricing.html">Pricing & Democratización</a>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Investigación</h5>
+        <a href="catedra.html">Cátedra CBC-UV</a>
+        <a href="catedra.html">Tesis CIBEC 2023</a>
+        <a href="https://github.com/ebarcos" target="_blank" rel="noopener">Perímetro GitHub</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-legal">
+        <span>&copy; 2026 VARNATIR · Todos los derechos reservados.</span>
+        <span>Aviso Legal</span>
+        <span>Privacidad & RGPD</span>
+      </div>
+      <div class="footer-governance">
+        <span>Confidencial · noindex, nofollow</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="cta-modal" aria-hidden="true">
+    <div class="modal-window">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-header">
+        <span class="badge-kicker text-accent">PILOTO ACOTADO</span>
+        <h3>Desbloquear un flujo con IA</h3>
+        <p>Selecciona tu caso y pondremos en marcha una prueba con anonimización estricta.</p>
+      </div>
+
+      <form class="modal-form" id="pilot-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="form-name">Nombre y Apellidos</label>
+          <input type="text" id="form-name" required placeholder="Ej. Enrique Barcos" />
+        </div>
+
+        <div class="form-group">
+          <label for="form-email">Correo Corporativo</label>
+          <input type="email" id="form-email" required placeholder="tu-nombre@empresa.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="form-sector">Sector / Ámbito</label>
+          <select id="form-sector" required>
+            <option value="" disabled selected>Selecciona tu sector</option>
+            <option value="enterprise-banca">Empresa · Banca & Finanzas</option>
+            <option value="enterprise-seguros">Empresa · Seguros</option>
+            <option value="enterprise-salud">Empresa · Salud & Clínicas</option>
+            <option value="enterprise-retail">Empresa · Retail & Transaccional</option>
+            <option value="govtech-aapp">Govtech · Administración Pública / Autonómica</option>
+            <option value="govtech-local">Govtech · Administración Local (Ayuntamientos)</option>
+            <option value="defensa-ffcse">Defensa / Policía / FFCSE / Emergencias</option>
+            <option value="otro">Otro sector sensible</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="form-case">¿Qué caso de IA quieres desbloquear?</label>
+          <textarea id="form-case" rows="3" placeholder="Ej. Asistente lateral de atención al ciudadano sin exponer datos fiscales o de salud"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-btn">
+          Solicitar piloto con IA
+        </button>
+
+        <div class="form-notice">
+          🔒 Tus datos viajan cifrados y no se ceden a terceros. Cumplimiento estricto RGPD.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
