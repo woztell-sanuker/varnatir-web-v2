@@ -321,22 +321,39 @@ function initLangSwitcher() {
     if (enBtn) {
       enBtn.addEventListener('click', (e) => {
         localStorage.setItem('varnatir_lang', 'en');
-        if (isSpanish) {
+        if (!isSpanish) {
           e.preventDefault();
-          const target = enBtn.getAttribute('href') || '../index.html';
-          window.location.href = target;
+          return;
         }
+        e.preventDefault();
+        let target = enBtn.getAttribute('href');
+        if (currentPath.includes('/es/')) {
+          target = currentPath.replace('/es/', '/');
+        } else if (currentPath.endsWith('/es')) {
+          target = currentPath.replace(/\/es$/, '/');
+        }
+        window.location.href = target || '../index.html';
       });
     }
 
     if (esBtn) {
       esBtn.addEventListener('click', (e) => {
         localStorage.setItem('varnatir_lang', 'es');
-        if (!isSpanish) {
+        if (isSpanish) {
           e.preventDefault();
-          const target = esBtn.getAttribute('href') || 'es/index.html';
-          window.location.href = target;
+          return;
         }
+        e.preventDefault();
+        let target = esBtn.getAttribute('href');
+        const lastSlash = currentPath.lastIndexOf('/');
+        const basePath = currentPath.substring(0, lastSlash + 1);
+        const filename = currentPath.substring(lastSlash + 1) || 'index.html';
+        if (filename.endsWith('.html')) {
+          target = basePath + 'es/' + filename;
+        } else {
+          target = basePath + 'es/';
+        }
+        window.location.href = target || 'es/index.html';
       });
     }
   });

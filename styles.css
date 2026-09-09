@@ -518,12 +518,12 @@ button {
 }
 
 .hero-title {
-  font-size: clamp(2.3rem, 5vw, 4.4rem);
+  font-size: clamp(2.1rem, 3.8vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.03em;
   line-height: 1.15;
   color: var(--text);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   max-width: 100%;
 }
 .hero-title .text-gradient {
@@ -531,11 +531,11 @@ button {
 }
 
 .hero-subhead {
-  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
   color: var(--text-muted);
-  max-width: 62ch;
-  line-height: 1.7;
-  margin-bottom: 36px;
+  max-width: 66ch;
+  line-height: 1.65;
+  margin-bottom: 32px;
 }
 
 /* ── KINETIC MOBILE VISUAL (Protagonismo Móvil y Gente en Movimiento) ── */
@@ -1951,6 +1951,63 @@ button {
 /* ═════════════════════════════════════════════════════════════
    STANDARDIZED INDUSTRY VERTICAL PAGES COMPONENTS
    ═════════════════════════════════════════════════════════════ */
+.badge-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.badge-kicker.enterprise {
+  background: rgba(95, 211, 184, 0.1);
+  border: 1px solid rgba(95, 211, 184, 0.28);
+  color: var(--accent);
+}
+.badge-kicker.govtech {
+  background: rgba(116, 34, 150, 0.12);
+  border: 1px solid rgba(116, 34, 150, 0.35);
+  color: #c98bf5;
+}
+.badge-kicker.defensa {
+  background: rgba(220, 100, 30, 0.12);
+  border: 1px solid rgba(220, 100, 30, 0.35);
+  color: #ff8c42;
+}
+
+.hero-proof-chips {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.proof-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  padding: 5px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+.proof-chip strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.proof-chip-tick {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .ksp-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
