@@ -179,11 +179,11 @@ function initHeroReel() {
 
     ctx.clearRect(0, 0, width, height);
 
-    // 1. Dual Chromatic Brand Gradient (Teal to Purple Depth)
-    const grad = ctx.createRadialGradient(width * 0.38, height * 0.4, 20, width * 0.5, height * 0.45, width * 0.75);
-    grad.addColorStop(0, 'rgba(24, 83, 89, 0.32)');
-    grad.addColorStop(0.48, 'rgba(75, 20, 95, 0.22)');
-    grad.addColorStop(1, 'rgba(7, 9, 14, 0.96)');
+    // 1. Dual Chromatic Brand Gradient (Soft seamless fade)
+    const grad = ctx.createRadialGradient(width * 0.45, height * 0.42, 20, width * 0.5, height * 0.45, width * 0.85);
+    grad.addColorStop(0, 'rgba(24, 83, 89, 0.22)');
+    grad.addColorStop(0.5, 'rgba(75, 20, 95, 0.14)');
+    grad.addColorStop(1, 'transparent');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, width, height);
 

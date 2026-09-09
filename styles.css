@@ -479,24 +479,23 @@ button {
 .hero-reel-scrim {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(11, 13, 12, 0.45) 0%, rgba(11, 13, 12, 0.88) 75%, var(--bg) 100%);
+  background: radial-gradient(ellipse 95% 85% at 50% 45%, transparent 0%, rgba(11, 13, 12, 0.55) 60%, var(--bg) 100%);
   pointer-events: none;
 }
 .hero-glow {
   position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1200px;
-  height: 800px;
-  background: radial-gradient(circle at 35% 35%, rgba(24, 83, 89, 0.35) 0%, transparent 60%),
-              radial-gradient(circle at 65% 40%, rgba(75, 20, 95, 0.30) 0%, transparent 60%);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse 90% 80% at 50% 25%, rgba(24, 83, 89, 0.25) 0%, rgba(75, 20, 95, 0.16) 45%, transparent 80%);
   z-index: 1;
   pointer-events: none;
 }
 .hero-container {
   position: relative;
   z-index: 2;
+  padding-left: clamp(24px, 4.5vw, 56px);
+  padding-right: clamp(24px, 4.5vw, 56px);
 }
 
 .hero-kicker {
@@ -2181,3 +2180,112 @@ button {
   .roi-grid { grid-template-columns: 1fr; }
   .deep-case-box { padding: 24px 18px; }
 }
+
+/* ── PARTNER & CHANNEL SYSTEM ── */
+.partner-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 36px;
+}
+.partner-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  position: relative;
+  transition: all var(--transition-base);
+}
+.partner-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+.partner-tier-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  background: rgba(95, 211, 184, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(95, 211, 184, 0.25);
+}
+.partner-tier-badge.gold {
+  background: rgba(234, 179, 8, 0.12);
+  color: #EAB308;
+  border-color: rgba(234, 179, 8, 0.28);
+}
+.partner-tier-badge.cyan {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38BDF8;
+  border-color: rgba(56, 189, 248, 0.28);
+}
+.partner-stat-highlight {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 8px 0;
+  line-height: 1.1;
+}
+.partner-stat-highlight span {
+  color: var(--accent);
+}
+.partner-toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 36px;
+}
+.toolkit-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: border-color var(--transition-fast);
+}
+.toolkit-item:hover {
+  border-color: var(--accent);
+}
+.toolkit-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(95, 211, 184, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.toolkit-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.partner-form-wrapper {
+  max-width: 760px;
+  margin: 40px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .partner-form-wrapper {
+    padding: 24px 20px;
+  }
+}
+
