@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="es" class="js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VARNATIR · Plataforma de Gobernanza Conversacional en Tiempo Real</title>
+
+  <!-- Canonical & Alternate Hreflang -->
+  <link rel="alternate" hreflang="en" href="https://varnatir.com/" />
+  <link rel="alternate" hreflang="es" href="https://varnatir.com/es/" />
+
+  <!-- Typography: Cabinet Grotesk, General Sans, Instrument Serif, JetBrains Mono -->
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800,900&f[]=jetbrains-mono@400,500,600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <!-- Ambient Cursor Follower (non-blocking) -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <span class="pulse-dot"></span>
+      <span>Tesis CIBEC 2023 como fundamento científico: <strong>Gobernar la conversación, no el canal</strong></span>
+      <a href="../catedra.html" class="top-bar-link">Ver investigación &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="site-header" id="navbar">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" id="logo" aria-label="VARNATIR">
+        <svg class="brand-isotipo" viewBox="0 0 145.17 123.8" width="32" height="28" aria-hidden="true">
+          <defs>
+            <linearGradient id="v-iso-hdr-es" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#185359"/>
+              <stop offset="50%" stop-color="#2B7E6E"/>
+              <stop offset="100%" stop-color="#4B145F"/>
+            </linearGradient>
+            <linearGradient id="v-iso-hdr-es-rev" x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#4B145F"/>
+              <stop offset="50%" stop-color="#742296"/>
+              <stop offset="100%" stop-color="#185359"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#v-iso-hdr-es)" d="m35.3,67.03l10.48,24.47.33.76c.11.26.22.51.31.7l.58,1.26c.39.84.86,1.64,1.31,2.45.51.78.96,1.59,1.54,2.33.28.37.54.76.83,1.13l.9,1.08c2.41,2.89,5.41,5.31,8.69,7.32,3.31,1.98,6.97,3.43,10.8,4.39,3.83.96,7.88,1.33,11.93,1.26,8.14-.17,16.39-2.34,24.26-5.61,3.97-1.62,7.64-3.52,11.16-5.86,3.51-2.32,6.73-5.07,9.66-8.11,5.8-6.12,10.3-13.63,12.51-21.88,2.24-8.22,2.17-17.18-.76-25.37-.73-2.02-1.64-4.06-2.51-6.1l-2.62-6.12-5.24-12.24,6.09,11.84,3.04,5.92c1.01,1.97,2.05,3.92,2.98,6.01,3.67,8.33,4.47,17.88,2.67,26.91-1.76,9.07-6.05,17.59-11.95,24.76-2.98,3.57-6.33,6.86-10.03,9.7-3.68,2.85-7.76,5.34-11.88,7.36-8.22,4.1-17.22,7.25-26.83,8.14-4.8.42-9.67.33-14.54-.51-4.85-.84-9.65-2.35-14.13-4.61-4.46-2.3-8.68-5.24-12.25-8.91l-1.33-1.39c-.43-.47-.83-.97-1.25-1.46-.85-.96-1.58-2.03-2.35-3.06-.71-1.07-1.43-2.15-2.07-3.27l-.94-1.7-.42-.79-.38-.74-12.18-23.67,13.57-6.39Z"/>
+          <path fill="url(#v-iso-hdr-es-rev)" d="m109.87,56.77l-10.48-24.47-.33-.76c-.11-.26-.22-.51-.31-.7l-.58-1.26c-.39-.84-.86-1.64-1.31-2.45-.51-.78-.96-1.59-1.54-2.33-.28-.37-.54-.76-.83-1.13l-.9-1.08c-2.41-2.89-5.41-5.31-8.69-7.32-3.31-1.98-6.97-3.43-10.8-4.39-3.83-.96-7.88-1.33-11.93-1.26-8.14.17-16.39,2.34-24.26,5.61-3.97,1.62-7.64,3.52-11.16,5.86-3.51,2.32-6.73,5.07-9.66,8.11-5.8,6.12-10.3,13.63-12.52,21.88-2.24,8.22-2.17,17.18.76,25.37.73,2.02,1.64,4.06,2.51,6.1l2.62,6.12,5.24,12.24-6.09-11.84-3.04-5.92c-1.01-1.97-2.05-3.92-2.98-6.01C-.07,68.8-.88,59.24.92,50.21c1.76-9.07,6.05-17.59,11.95-24.76,2.98-3.57,6.33-6.86,10.03-9.7,3.68-2.85,7.76-5.34,11.88-7.36C43,4.29,52,1.14,61.61.25c4.8-.42,9.67-.33,14.54.51,4.85.84,9.65,2.35,14.13,4.61,4.46,2.3,8.68,5.24,12.25,8.91l1.33,1.39c.43.47.83.97,1.25,1.46.85.96,1.58,2.03,2.35,3.06.71,1.07,1.43,2.15,2.07,3.27l.94,1.7.42.79.38.74,12.18,23.67-13.57,6.39Z"/>
+        </svg>
+        <span class="logo-text">VARNATIR</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="#solution" class="nav-link">Solución</a>
+        <a href="#ia" class="nav-link">IA &amp; Privacidad</a>
+        <a href="#industries" class="nav-link">Industrias</a>
+        <a href="#compliance" class="nav-link">Compliance</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#catedra" class="nav-link">Cátedra</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" aria-label="Selector de Idioma">
+          <a href="../index.html" class="lang-link" data-lang="en">EN</a>
+          <a href="index.html" class="lang-link active" data-lang="es">ES</a>
+        </div>
+
+        <a href="solution.html" class="btn btn-ghost">Cómo opera</a>
+        <button class="btn btn-primary" id="open-cta-modal" onclick="openModal()">Desbloquear un flujo</button>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH AMBIENT 60FPS REEL -->
+  <section class="hero-section" id="hero">
+    <!-- 60 FPS Procedural Background Reel Engine (estilo wam.global) -->
+    <div class="hero-reel-wrap">
+      <canvas id="hero-reel-canvas"></canvas>
+      <div class="hero-reel-scrim"></div>
+    </div>
+    <div class="hero-glow"></div>
+
+    <div class="container hero-container">
+      <div class="hero-kicker">
+        <span class="hero-kicker-line"></span>
+        GOBERNANZA CONVERSACIONAL EN TIEMPO REAL &amp; CONTROL DE VUELO ACTIVO
+      </div>
+
+      <!-- Single Consolidated H1 -->
+      <h1 class="hero-title">
+        El canal lo elige tu cliente.<br>
+        <span class="text-gradient">La conversación la decide tu empresa.</span>
+      </h1>
+
+      <!-- Punchy B2B Enterprise Copy (Menos narrativa, directo al valor) -->
+      <p class="hero-subhead">
+        Lleva la IA generativa y las operaciones críticas a WhatsApp, Teams y Telegram sin riesgo sancionador ni exposición de PII. Gobernanza activa sobre cada mensaje antes del envío — sin ceder el control del dato*.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg" id="hero-primary-cta" onclick="openModal()">
+          <span>Desbloquear un flujo</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <a href="#solution" class="btn-arrow">
+          Ver arquitectura
+          <span class="arrow-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Proof Specs -->
+      <div class="hero-proof-bar">
+        <div class="proof-item">
+          <span class="proof-badge">&#x1F6E1;</span>
+          <span>Diseñado conforme al <strong>ENS Media (RD 311/2022)</strong></span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-badge">&#x26A1;</span>
+          <span>Intervención <strong>&lt; 3ms antes de la entrega</strong></span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-badge">&#x1F4F1;</span>
+          <span>Coexistencia dual <strong>sin instalar apps nuevas</strong></span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-badge">&#x1F91D;</span>
+          <span>Solution Partner oficial de <strong>Meta</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR: OFFICIAL SOLUTION PARTNERS -->
+  <section class="partners-section">
+    <div class="container">
+      <div class="partners-kicker">ALIANZAS Y CERTIFICACIONES OFICIALES</div>
+      <div class="partners-grid">
+        <!-- Partner 1: Meta -->
+        <div class="partner-card">
+          <div class="partner-icon" style="background: rgba(0, 129, 251, 0.12);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#0081FB"><path d="M16.99 0H7.01C3.14 0 0 3.14 0 7.01v9.98C0 20.86 3.14 24 7.01 24h9.98c3.87 0 7.01-3.14 7.01-7.01V7.01C24 3.14 20.86 0 16.99 0zm-1.87 18.23c-1.57 0-2.85-.79-3.83-2.07-1 1.28-2.27 2.07-3.85 2.07-2.6 0-4.66-2.12-4.66-4.8 0-2.67 2.06-4.79 4.66-4.79 1.58 0 2.86.79 3.85 2.07.98-1.28 2.26-2.07 3.83-2.07 2.61 0 4.66 2.12 4.66 4.79 0 2.68-2.05 4.8-4.66 4.8z"/></svg>
+          </div>
+          <div class="partner-info">
+            <span class="partner-name">Meta Solution Partner</span>
+            <span class="partner-detail">Partner Oficial de Meta</span>
+          </div>
+        </div>
+
+        <!-- Partner 2: AWS -->
+        <div class="partner-card">
+          <div class="partner-icon" style="background: rgba(255, 153, 0, 0.12);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF9900"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div class="partner-info">
+            <span class="partner-name">AWS Partner Network</span>
+            <span class="partner-detail">Certified Cloud Sovereignty</span>
+          </div>
+        </div>
+
+        <!-- Partner 3: Google Cloud -->
+        <div class="partner-card">
+          <div class="partner-icon" style="background: rgba(66, 133, 244, 0.12);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#4285F4"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+          </div>
+          <div class="partner-info">
+            <span class="partner-name">Google Cloud Partner</span>
+            <span class="partner-detail">Infraestructura Certificada</span>
+          </div>
+        </div>
+
+        <!-- Partner 4: ENS Media -->
+        <div class="partner-card">
+          <div class="partner-icon" style="background: rgba(95, 211, 184, 0.12);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5FD3B8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="partner-info">
+            <span class="partner-name">ENS Categoría Media</span>
+            <span class="partner-detail">RD 311/2022 · Cátedra CBC-UV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stat-section">
+    <div class="container">
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-number">+200</div>
+          <div class="stat-label">Flujos transaccionales gobernados</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">&lt;3<span>ms</span></div>
+          <div class="stat-label">Latencia de intervención en origen</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Sectores regulados protegidos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3<span>+</span></div>
+          <div class="stat-label">Patentes y modelos metodológicos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: LOGOS DE CLIENTES Y ORGANIZACIONES VERIFICADAS DEL CORPUS -->
+  <section class="clients-section">
+    <div class="container">
+      <div class="clients-kicker">CREDENCIALES Y CLIENTES VERIFICADOS DEL ECOSISTEMA</div>
+      <h2 class="clients-title">Organizaciones y Marcas que Operan con la Infraestructura</h2>
+      <div class="clients-grid">
+        <!-- Enterprise: Standard Chartered -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+            <span class="client-badge-tag enterprise">ENTERPRISE</span>
+          </div>
+          <div class="client-name">Standard Chartered</div>
+          <div class="client-sub">Banca Global Tier-1</div>
+        </div>
+
+        <!-- Enterprise: McDonald's HK -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 4.5C9.5 4.5 7.5 7.5 7 12c-.5-4.5-2.5-7.5-5-7.5v15h4v-8.5c.5 3 2 5.5 3 5.5s2.5-2.5 3-5.5v8.5h4v-8.5c.5 3 2 5.5 3 5.5s2.5-2.5 3-5.5v8.5h4v-15c-2.5 0-4.5 3-5 7.5-.5-4.5-2.5-7.5-5-7.5z"/></svg>
+            </div>
+            <span class="client-badge-tag enterprise">ENTERPRISE</span>
+          </div>
+          <div class="client-name">McDonald's HK</div>
+          <div class="client-sub">Pedidos Conversacionales Retail</div>
+        </div>
+
+        <!-- Enterprise: HSBC Partner -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 2L4 12l8 10 8-10L12 2zm0 4.5L16.5 12 12 17.5 7.5 12 12 6.5z"/></svg>
+            </div>
+            <span class="client-badge-tag enterprise">ENTERPRISE</span>
+          </div>
+          <div class="client-name">HSBC Partner</div>
+          <div class="client-sub">Ecosistema Business Go</div>
+        </div>
+
+        <!-- Enterprise: Toyota & Lexus -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="6" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="10" rx="4.5" ry="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span class="client-badge-tag enterprise">ENTERPRISE</span>
+          </div>
+          <div class="client-name">Toyota &amp; Lexus</div>
+          <div class="client-sub">Automoción &amp; Financiación</div>
+        </div>
+
+        <!-- Enterprise: IWC Schaffhausen -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+            </div>
+            <span class="client-badge-tag enterprise">ENTERPRISE</span>
+          </div>
+          <div class="client-name">IWC Schaffhausen</div>
+          <div class="client-sub">Alta Relojería Suiza</div>
+        </div>
+
+        <!-- Enterprise: PlayStation HK -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M4 6l4 12h3l-2-6h6l-2 6h3l4-12H4zm8 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
+            </div>
+            <span class="client-badge-tag enterprise">ENTERPRISE</span>
+          </div>
+          <div class="client-name">PlayStation HK</div>
+          <div class="client-sub">Gaming &amp; Comercio Digital</div>
+        </div>
+
+        <!-- GovTech: INCIBE -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+            </div>
+            <span class="client-badge-tag govtech">GOVTECH</span>
+          </div>
+          <div class="client-name">INCIBE</div>
+          <div class="client-sub">Inst. Nacional de Ciberseguridad</div>
+        </div>
+
+        <!-- GovTech: Diputación de Guadalajara -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z"/></svg>
+            </div>
+            <span class="client-badge-tag govtech">GOVTECH</span>
+          </div>
+          <div class="client-name">Dip. de Guadalajara</div>
+          <div class="client-sub">Administración Provincial</div>
+        </div>
+
+        <!-- GovTech: Ayuntamiento de Elche -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+            </div>
+            <span class="client-badge-tag govtech">GOVTECH</span>
+          </div>
+          <div class="client-name">Ajuntament d'Elx</div>
+          <div class="client-sub">Atención Ciudadana 24/7</div>
+        </div>
+
+        <!-- GovTech: Ayuntamiento de Castelló -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+            </div>
+            <span class="client-badge-tag govtech">GOVTECH</span>
+          </div>
+          <div class="client-name">Ajuntament de Castelló</div>
+          <div class="client-sub">Servicios Municipales</div>
+        </div>
+
+        <!-- GovTech: Ayuntamiento de Torre Pacheco -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+            </div>
+            <span class="client-badge-tag govtech">GOVTECH</span>
+          </div>
+          <div class="client-name">Ayto. Torre Pacheco</div>
+          <div class="client-sub">Ventanilla Única WhatsApp</div>
+        </div>
+
+        <!-- GovTech: Mancomunidad Tierras Altas -->
+        <div class="client-card">
+          <div class="client-card-top">
+            <div class="client-emblem">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            </div>
+            <span class="client-badge-tag govtech">GOVTECH</span>
+          </div>
+          <div class="client-name">Tierras Altas</div>
+          <div class="client-sub">Adjudicación Formal 131.600 €</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1: EL CONFLICTO (TARGETING DIRECTO DPO, COMPLIANCE, CISO) -->
+  <section class="section-container bg-surface-alt" id="por-que">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-line"></span>
+          <span class="section-eyebrow-text">LA VERDAD INCÓMODA</span>
+        </div>
+        <h2 class="section-h2-epic">
+          Tus clientes ya hacen negocios en WhatsApp.<br>
+          <span class="text-gradient">Y tu organización no puede seguir operando a ciegas.</span>
+        </h2>
+        <p class="section-lead">
+          El Shadow IT no es indisciplina: es la respuesta inmediata del mercado ante plataformas rígidas. Tu negocio necesita la inmediatez comercial de WhatsApp; tu DPO prohíbe taxativamente exponer datos personales a modelos externos; tu Comité de Compliance exige trazabilidad fehaciente de no-repudio. Hoy tu empresa está perdiendo los tres frentes.
+        </p>
+      </div>
+
+      <div class="conflict-grid-v2">
+        <div class="conflict-col">
+          <span class="conflict-tag">SALIDA FALSA 01 · PROHIBICIÓN</span>
+          <h3>Prohibir el canal</h3>
+          <p>
+            Decir «prohibido usar WhatsApp con clientes» no frena la conversación: la oculta a los ojos del CISO. Genera Shadow IT masivo, pérdida total de custodia probatoria y desprotección jurídica absoluta.
+          </p>
+          <div class="conflict-verdict-v2">&cross; Fuga descontrolada garantizada</div>
+        </div>
+
+        <div class="conflict-col">
+          <span class="conflict-tag">SALIDA FALSA 02 · DCGA TRADICIONAL</span>
+          <h3>Archivar después de entregar</h3>
+          <p>
+            Capturar una copia pasiva horas después de que el mensaje llegó al teléfono del cliente no evita la brecha. Solo constata la infracción RGPD y documenta la sanción ante la Agencia de Protección de Datos.
+          </p>
+          <div class="conflict-verdict-v2">&cross; Cero prevención: solo certifica la multa</div>
+        </div>
+
+        <div class="conflict-col">
+          <span class="conflict-tag">SALIDA FALSA 03 · AUTOMATIZACIÓN CIEGA</span>
+          <h3>El bot FAQ desconectado</h3>
+          <p>
+            Imponer chatbots rígidos que no resuelven transacciones reales frustra al cliente. Los gestores comerciales terminan saltando al WhatsApp personal sin supervisión alguna.
+          </p>
+          <div class="conflict-verdict-v2">&cross; Destruye la adopción y dispersa el dato sensible</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: LA NUEVA CATEGORÍA -->
+  <section class="section-container" id="que-es">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-line"></span>
+          <span class="section-eyebrow-text">LA NUEVA CATEGORÍA</span>
+        </div>
+        <h2 class="section-h2-epic">
+          El canal es sustituible.<br>
+          <span class="text-gradient">La conversación es tu activo.</span>
+        </h2>
+        <p class="section-lead">
+          VARNATIR desacopla la gobernanza corporativa del canal de mensajería subyacente. Opera como un plano de control universal que garantiza cumplimiento, inmutabilidad y auditabilidad sin ceder el control del dato*.
+        </p>
+      </div>
+
+      <div class="model-cards-grid">
+        <div class="model-card">
+          <div class="card-tag">PRINCIPIO 01 / DESACOPLAMIENTO</div>
+          <h3 class="card-title">Independencia Total de Canal</h3>
+          <p class="card-desc">
+            WhatsApp, Telegram, Teams o SMS son simples vehículos de transporte. El contexto, la identidad verificada y los metadatos de la relación pertenecen exclusivamente a tu organización.
+          </p>
+        </div>
+        <div class="model-card">
+          <div class="card-tag">PRINCIPIO 02 / EN EL VUELO</div>
+          <h3 class="card-title">Gobernanza Activa en Origen</h3>
+          <p class="card-desc">
+            Inspección semántica, DLP y anonimización de PII en menos de 3 milisegundos ANTES de que el mensaje sea entregado al destinatario o procesado por un modelo de IA.
+          </p>
+        </div>
+        <div class="model-card">
+          <div class="card-tag">PRINCIPIO 03 / CUSTODIA</div>
+          <h3 class="card-title">Custodia Probatoria &amp; No-Repudio</h3>
+          <p class="card-desc">
+            Sellado de tiempo criptográfico y hash inmutable con claves custodiadas por el cliente (BYOK). Validez probatoria íntegra ante auditorías, litigios y reguladores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: ARQUITECTURA DE INTERVENCIÓN (CONTROL DE VUELO VS CAJA NEGRA) -->
+  <section class="section-container bg-surface-alt" id="solution">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-line"></span>
+          <span class="section-eyebrow-text">ARQUITECTURA DE INTERVENCIÓN</span>
+        </div>
+        <h2 class="section-h2-epic">
+          Control de Vuelo vs. Caja Negra:<br>
+          <span class="text-gradient">Cómo opera VARNATIR en cada mensaje</span>
+        </h2>
+        <p class="section-lead">
+          Una vez que un mensaje llega al dispositivo del destinatario, no hay marcha atrás posible. Por eso VARNATIR gobierna en origen, antes de la entrega.
+        </p>
+      </div>
+
+      <!-- Diagrama Pipeline Interactivo -->
+      <div class="visual-diagram-card">
+        <div class="visual-diagram-header">
+          <div class="visual-diagram-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span>DIAGRAMA DE INTERVENCIÓN ACTIVA EN ORIGEN · LATENCIA: 2.8ms</span>
+          </div>
+          <span class="diagram-badge">&check; GOBERNANZA ACTIVA PRE-ENTREGA</span>
+        </div>
+
+        <svg class="diagram-canvas-svg" viewBox="0 0 1060 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradFlowEs" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#5FD3B8" stop-opacity="0.2"/>
+              <stop offset="50%" stop-color="#5FD3B8" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#5FD3B8" stop-opacity="0.2"/>
+            </linearGradient>
+            <filter id="glowEs" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          <!-- Líneas conectoras -->
+          <line x1="170" y1="110" x2="270" y2="110" stroke="url(#gradFlowEs)" stroke-width="3" stroke-dasharray="6 4" />
+          <line x1="430" y1="110" x2="530" y2="110" stroke="url(#gradFlowEs)" stroke-width="3" stroke-dasharray="6 4" />
+          <line x1="690" y1="110" x2="790" y2="110" stroke="url(#gradFlowEs)" stroke-width="3" stroke-dasharray="6 4" />
+          <line x1="950" y1="110" x2="1030" y2="110" stroke="#5FD3B8" stroke-width="3" />
+
+          <!-- Nodo 1: Origen -->
+          <rect x="20" y="55" width="150" height="110" rx="12" fill="#111620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+          <circle cx="95" cy="85" r="16" fill="rgba(95,211,184,0.12)" />
+          <text x="95" y="90" fill="#5FD3B8" font-size="14" font-weight="bold" text-anchor="middle" font-family="'JetBrains Mono', monospace">01</text>
+          <text x="95" y="125" fill="#F3F5F7" font-size="13" font-weight="bold" text-anchor="middle" font-family="'General Sans', sans-serif">Canal Cliente</text>
+          <text x="95" y="145" fill="#94A3B8" font-size="11" text-anchor="middle" font-family="'General Sans', sans-serif">WhatsApp / Teams</text>
+
+          <!-- Nodo 2: Interceptor Gateway -->
+          <rect x="270" y="45" width="160" height="130" rx="14" fill="#171E2B" stroke="#5FD3B8" stroke-width="2" filter="url(#glowEs)" />
+          <circle cx="350" cy="78" r="16" fill="rgba(95,211,184,0.2)" />
+          <text x="350" y="83" fill="#5FD3B8" font-size="14" font-weight="bold" text-anchor="middle" font-family="'JetBrains Mono', monospace">02</text>
+          <text x="350" y="118" fill="#F3F5F7" font-size="13" font-weight="bold" text-anchor="middle" font-family="'General Sans', sans-serif">VARNATIR Gateway</text>
+          <text x="350" y="138" fill="#5FD3B8" font-size="11" font-weight="600" text-anchor="middle" font-family="'JetBrains Mono', monospace">Intercepción &lt; 3ms</text>
+          <text x="350" y="156" fill="#94A3B8" font-size="10" text-anchor="middle" font-family="'General Sans', sans-serif">Reglas de Compliance</text>
+
+          <!-- Nodo 3: DLP & Anonimizador -->
+          <rect x="530" y="55" width="160" height="110" rx="12" fill="#111620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+          <circle cx="610" cy="85" r="16" fill="rgba(95,211,184,0.12)" />
+          <text x="610" y="90" fill="#5FD3B8" font-size="14" font-weight="bold" text-anchor="middle" font-family="'JetBrains Mono', monospace">03</text>
+          <text x="610" y="125" fill="#F3F5F7" font-size="13" font-weight="bold" text-anchor="middle" font-family="'General Sans', sans-serif">DLP &amp; PII Vault</text>
+          <text x="610" y="145" fill="#94A3B8" font-size="11" text-anchor="middle" font-family="'General Sans', sans-serif">Tokenización Pre-LLM*</text>
+
+          <!-- Nodo 4: Core & LLM Privado -->
+          <rect x="790" y="55" width="160" height="110" rx="12" fill="#111620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+          <circle cx="870" cy="85" r="16" fill="rgba(95,211,184,0.12)" />
+          <text x="870" y="90" fill="#5FD3B8" font-size="14" font-weight="bold" text-anchor="middle" font-family="'JetBrains Mono', monospace">04</text>
+          <text x="870" y="125" fill="#F3F5F7" font-size="13" font-weight="bold" text-anchor="middle" font-family="'General Sans', sans-serif">Core &amp; Inferencia</text>
+          <text x="870" y="145" fill="#94A3B8" font-size="11" text-anchor="middle" font-family="'General Sans', sans-serif">Salas Efímeras / CRM</text>
+
+          <!-- Destino: Custodia Inmutable -->
+          <circle cx="1040" cy="110" r="18" fill="#5FD3B8" />
+          <path d="M1035 110l4 4 8-8" stroke="#07090E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+      <!-- Comparativa Interactiva de Arquitectura -->
+      <div class="comparison-container">
+        <div class="comparison-tabs">
+          <button class="comp-tab active" id="tab-varnatir" onclick="toggleComparison('varnatir')">
+            <span class="comp-dot active"></span>
+            Arquitectura VARNATIR (Control de Vuelo Activo)
+          </button>
+          <button class="comp-tab" id="tab-legacy" onclick="toggleComparison('legacy')">
+            <span class="comp-dot legacy"></span>
+            Sistemas Tradicionales DCGA (Caja Negra Pasiva)
+          </button>
+        </div>
+
+        <!-- Panel VARNATIR -->
+        <div class="comp-panel active" id="panel-varnatir">
+          <div class="pipeline-flow">
+            <div class="flow-step">
+              <div class="step-num">01 · ENTRADA</div>
+              <div class="step-title">Coexistencia en Número</div>
+              <div class="step-desc">El comercial usa su WhatsApp corporativo habitual. Cero instalación de apps extrañas. Cero fricción de adopción.</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step highlight">
+              <div class="step-num">02 · GOBERNANZA ACTIVA</div>
+              <div class="step-title">Inspección &amp; DLP &lt; 3ms</div>
+              <div class="step-desc">Evaluación previa al envío. Anonimización estricta de PII sensible y filtrado de políticas antes del despacho.</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+              <div class="step-num">03 · ENRUTAMIENTO</div>
+              <div class="step-title">Salas Efímeras Acotadas</div>
+              <div class="step-desc">Si el contenido es transaccional sensible, salta a sala cifrada efímera. Si es estándar, se entrega homologado.</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+              <div class="step-num">04 · CUSTODIA</div>
+              <div class="step-title">Custodia Corporativa</div>
+              <div class="step-desc">Registro inmutable en el repositorio propio de la entidad. Claves criptográficas en HSM del cliente (BYOK).</div>
+            </div>
+          </div>
+          <div class="comp-summary-note text-accent">
+            &check; <strong>Riesgo desactivado en origen:</strong> La fuga o infracción legal nunca llega a consumarse.
+          </div>
+        </div>
+
+        <!-- Panel Legacy -->
+        <div class="comp-panel" id="panel-legacy">
+          <div class="pipeline-flow">
+            <div class="flow-step">
+              <div class="step-num">01 · ORIGEN</div>
+              <div class="step-title">Envío Libre</div>
+              <div class="step-desc">El empleado envía datos confidenciales o acuerdos comerciales sin ningún filtro preventivo en origen.</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step warning">
+              <div class="step-num">02 · IMPACTO</div>
+              <div class="step-title">Llegada al Destinatario</div>
+              <div class="step-desc">El mensaje ya está en el teléfono privado del cliente. La fuga de datos o brecha RGPD ya es irreversible.</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+              <div class="step-num">03 · ARCHIVADO</div>
+              <div class="step-title">Copia en Servidor Pasivo</div>
+              <div class="step-desc">Un conector pasivo almacena horas después una copia estática en un silo de auditoría forense.</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step danger">
+              <div class="step-num">04 · SANCIÓN</div>
+              <div class="step-title">Litigio o Multa</div>
+              <div class="step-desc">Legal y CISO descubren la brecha meses después cuando llega el requerimiento sancionador del regulador.</div>
+            </div>
+          </div>
+          <div class="comp-summary-note text-danger">
+            &cross; <strong>Inoperante ante el daño:</strong> El DCGA tradicional no evita la filtración, solo documenta la sanción.
+          </div>
+        </div>
+      </div>
+
+      <!-- Modalidades de Despliegue -->
+      <div class="deployment-box">
+        <h3 class="deploy-title">Modalidades de Despliegue</h3>
+        <div class="deploy-grid">
+          <div class="deploy-card">
+            <h4>VARNATIR Cloud Soberano</h4>
+            <p>Despliegue multi-organización con unidad de aislamiento estricta sobre infraestructura europea soberana. Puesta en marcha en 48 horas.</p>
+            <span class="badge-deploy">Inmediato · 48h</span>
+          </div>
+          <div class="deploy-card">
+            <h4>VARNATIR Dedicated / PaaS</h4>
+            <p>Despliegue dedicado en la VPC privada de tu organización (AWS, Azure, GCP). Control total de claves de cifrado gestionadas (BYOK).</p>
+            <span class="badge-deploy">VPC · BYOK</span>
+          </div>
+          <div class="deploy-card">
+            <h4>Despliegue de Misión Crítica</h4>
+            <p>Para fuerzas y cuerpos de seguridad, defensa y entidades críticas que exigen segregación estricta conforme al Esquema Nacional de Seguridad (ENS Media).</p>
+            <span class="badge-deploy">ENS Media · Air-Gapped</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: CASOS DE USO REALES (SWIPER) -->
+    <!-- SECCIÓN 4: HUB DE GOBIERNO SECTORIAL (INDUSTRIES) -->
+  <section class="cases-section" id="industries">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 40px;">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-line"></span>
+          <span class="section-eyebrow-text">GOBIERNO SECTORIAL · TRES VERTICALES ESPECIALIZADOS</span>
+        </div>
+        <h2 class="section-h2-epic">
+          Diseñado para las fricciones regulatorias<br>
+          <span class="text-gradient">exactas de tu sector de actividad.</span>
+        </h2>
+        <p class="section-lead">
+          Cada industria afronta barreras de cumplimiento y riesgos específicos. VARNATIR despliega un control de vuelo adaptado que transforma canales de consumo en entornos de misión crítica con plena certidumbre jurídica y operativa.
+        </p>
+      </div>
+
+      <!-- 3 TARJETAS DE PILAR DE INDUSTRIA -->
+      <div class="industries-hub-grid">
+        <!-- Pilar 1: Enterprise -->
+        <div class="ind-hub-card card-enterprise">
+          <div class="ind-hub-header">
+            <span class="ind-hub-num">01 · CORPORATE</span>
+            <span class="ind-hub-badge">DORA · SOLVENCIA II · ART. 9</span>
+          </div>
+          <h3 class="ind-hub-title">Enterprise &amp; Mercados Regulados</h3>
+          <p class="ind-hub-desc">
+            Desbloquea transacciones, contrataciones y atención de alto valor en banca, seguros, salud y gran retail sin que el dato personal viaje al modelo LLM.
+          </p>
+          <ul class="ind-hub-points">
+            <li><strong>Coexistencia en el número:</strong> Tu cliente y tu equipo usan su WhatsApp diario sin instalar nuevas apps.</li>
+            <li><strong>Enmascaramiento &lt;3ms:</strong> Tokenización PII en tránsito con claves bajo custodia de la organización (BYOK).</li>
+            <li><strong>Resolución automatizada:</strong> Del 75% al 80% del volumen rutinario de cuenta resuelto con garantías de auditoría.</li>
+          </ul>
+          <div class="ind-hub-stat">
+            &check; 0 brechas sobre +50.000 operaciones bancarias y peritajes
+          </div>
+          <div class="ind-hub-action">
+            <a href="industries-enterprise.html" class="btn btn-primary btn-block">
+              <span>Ver Soluciones Enterprise &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 2: GovTech -->
+        <div class="ind-hub-card card-govtech">
+          <div class="ind-hub-header">
+            <span class="ind-hub-num">02 · AAPP</span>
+            <span class="ind-hub-badge">ENS MEDIA (RD 311/2022)</span>
+          </div>
+          <h3 class="ind-hub-title">GovTech &amp; Administraciones Públicas</h3>
+          <p class="ind-hub-desc">
+            Atención ciudadana, consulta de expedientes, avisos tributarios y ventanilla única en WhatsApp sin brecha digital y con plena validez administrativa.
+          </p>
+          <ul class="ind-hub-points">
+            <li><strong>Sin certificados complejos:</strong> Acceso universal para ciudadanos mayores o colectivos no digitalizados.</li>
+            <li><strong>Integración con el expediente:</strong> Vinculación trazable con el registro electrónico y la sede municipal.</li>
+            <li><strong>Conformidad ENS Media:</strong> Aislamiento de pistas de auditoría y alojamiento en nube soberana europea.</li>
+          </ul>
+          <div class="ind-hub-stat">
+            &check; Tracción probada: INCIBE, Guadalajara, Elche, Tierras Altas
+          </div>
+          <div class="ind-hub-action">
+            <a href="industries-govtech.html" class="btn btn-primary btn-block">
+              <span>Ver Soluciones GovTech &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 3: Defensa -->
+        <div class="ind-hub-card card-defensa">
+          <div class="ind-hub-header">
+            <span class="ind-hub-num">03 · TACTICAL</span>
+            <span class="ind-hub-badge">SALA EFÍMERA · CADENA CUSTODIA</span>
+          </div>
+          <h3 class="ind-hub-title">Defensa &amp; Seguridad Crítica</h3>
+          <p class="ind-hub-desc">
+            Salas tácticas acotadas, atestados de campo inmediatos, custodia forense de evidencias y protección de víctimas sin dejar rastro en terminales inseguros.
+          </p>
+          <ul class="ind-hub-points">
+            <li><strong>Salas efímeras destruibles:</strong> Apertura ante incidente y purga criptográfica completa al cerrar la misión.</li>
+            <li><strong>Cero huella en terminal:</strong> Eliminación remota de cachés y multimedia en dispositivos de víctimas o agentes.</li>
+            <li><strong>Validez judicial fehaciente:</strong> Sellado temporal RFC 3161 y hash no repudiable para atestados y fiscalía.</li>
+          </ul>
+          <div class="ind-hub-stat">
+            &check; Protocolos probados para VioGén, UFAM y Mando Táctico
+          </div>
+          <div class="ind-hub-action">
+            <a href="industries-defensa.html" class="btn btn-primary btn-block">
+              <span>Ver Soluciones de Defensa &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEADER DEL SWIPER INTERACTIVO -->
+      <div class="cases-header" style="margin-top: 56px;">
+        <div>
+          <div class="section-eyebrow">
+            <span class="section-eyebrow-line"></span>
+            <span class="section-eyebrow-text">DEMOSTRACIÓN INTERACTIVA DE FLUJOS EN PRODUCCIÓN</span>
+          </div>
+          <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--text); margin-top: 8px;">
+            La mensajería ya no es para chatear.<br>
+            <span class="text-gradient">Es para ejecutar operaciones críticas.</span>
+          </h3>
+        </div>
+        <div class="swiper-nav">
+          <button class="swiper-btn" id="swiper-prev" aria-label="Anterior">&larr;</button>
+          <div class="swiper-dots" id="swiper-dots"></div>
+          <button class="swiper-btn" id="swiper-next" aria-label="Siguiente">&rarr;</button>
+        </div>
+      </div>
+
+
+      <div class="swiper-outer">
+        <div class="swiper-track" id="swiper-track">
+          <!-- Slide 1: Banca -->
+          <div class="case-slide">
+            <span class="case-vertical-tag">BANCA · GESTIÓN DE PATRIMONIOS</span>
+            <h3>Aprobación de operaciones y créditos sin exponer datos financieros</h3>
+            <p>Los banqueros privados interactúan con clientes de alto patrimonio por WhatsApp. VARNATIR interviene cada transacción, anonimiza números de cuenta y emite firma fehaciente antes del envío.</p>
+            <div class="case-metric-tag">&check; 0 brechas en +50k órdenes transaccionales</div>
+          </div>
+
+          <!-- Slide 2: Seguros -->
+          <div class="case-slide">
+            <span class="case-vertical-tag">SEGUROS · PERITAJE Y SINIESTROS</span>
+            <h3>Apertura de siniestros con fotos fehacientes y firma digital en chat</h3>
+            <p>El asegurado envía imágenes del siniestro por WhatsApp. VARNATIR certifica metadatos, hora exacta e inmutabilidad, volcándolos directamente en el core asegurador.</p>
+            <div class="case-metric-tag">&check; Tiempo de resolución reducido de 6 días a 4 horas</div>
+          </div>
+
+          <!-- Slide 3: Salud -->
+          <div class="case-slide">
+            <span class="case-vertical-tag">SALUD · CLÍNICAS Y HOSPITALES</span>
+            <h3>Citación confidencial y entrega de analíticas con blindaje RGPD</h3>
+            <p>Comunicación médico-paciente en canal accesible con descarte automático de datos médicos sensibles (categoría especial RGPD Art. 9) y salto a sala efímera criptográfica.</p>
+            <div class="case-metric-tag">&check; 100% de cumplimiento en datos especialmente protegidos</div>
+          </div>
+
+          <!-- Slide 4: Retail -->
+          <div class="case-slide">
+            <span class="case-vertical-tag">RETAIL · VENTA ASISTIDA HIGH-TICKET</span>
+            <h3>Cierre de ventas y pago seguro dentro de la conversación</h3>
+            <p>Ventas consultivas de alto valor asistidas por IA. Integración de pasarela de pago PCI-DSS dentro de la conversación de WhatsApp sin redirecciones a navegadores externos.</p>
+            <div class="case-metric-tag">&check; +38% de conversión frente a formularios web</div>
+          </div>
+
+          <!-- Slide 5: Govtech -->
+          <div class="case-slide">
+            <span class="case-vertical-tag">GOVTECH · ADMINISTRACIONES PÚBLICAS</span>
+            <h3>Trámites ciudadanos, padrón y certificados con firma fehaciente</h3>
+            <p>Atención al ciudadano y gestión de certificados oficiales en mensajería con identificación reforzada, conforme al Esquema Nacional de Seguridad (ENS).</p>
+            <div class="case-metric-tag">&check; Homologación plena ENS Nivel Medio</div>
+          </div>
+
+          <!-- Slide 6: Defensa -->
+          <div class="case-slide">
+            <span class="case-vertical-tag">DEFENSA · FUERZAS DE SEGURIDAD</span>
+            <h3>Coordinación operativa táctica y borrado remoto de salas críticas</h3>
+            <p>Comunicaciones de emergencia y despliegue sobre canales comerciales con cifrado BYOK y capacidad de autodestrucción criptográfica verificada.</p>
+            <div class="case-metric-tag">&check; Segregación estricta y claves en poder del cliente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: CISO / DPO / COMPLIANCE (DOBLE PERÍMETRO Y TERMINAL) -->
+  <section class="section-container" id="compliance">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-line"></span>
+          <span class="section-eyebrow-text">SEGURIDAD &amp; COMPLIANCE (CISO · DPO · COMPLIANCE)</span>
+        </div>
+        <h2 class="section-h2-epic">
+          La agilidad comercial que exige el negocio.<br>
+          <span class="text-gradient">La arquitectura de confianza cero que valida el CISO.</span>
+        </h2>
+        <p class="section-lead">
+          Los equipos de negocio necesitan velocidad comercial; los equipos de seguridad y cumplimiento normativo exigen perímetros inexpugnables. VARNATIR suprime el compromiso integrando un doble perímetro criptográfico.
+        </p>
+      </div>
+
+      <!-- Diagrama de Doble Perímetro CISO -->
+      <div class="visual-diagram-card" id="ia">
+        <div class="visual-diagram-header">
+          <div class="visual-diagram-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>ARQUITECTURA DE SEGURIDAD · AISLAMIENTO DE PERÍMETRO DUAL</span>
+          </div>
+          <span class="diagram-badge">&check; CONFORME ENS MEDIA &amp; DORA</span>
+        </div>
+
+        <svg class="diagram-canvas-svg" viewBox="0 0 1060 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Zona 1: Perímetro Exterior No Confiable -->
+          <rect x="20" y="30" width="280" height="140" rx="14" fill="#0E121A" stroke="rgba(239,68,68,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+          <text x="40" y="60" fill="#EF4444" font-size="11" font-weight="bold" font-family="'JetBrains Mono', monospace">PERÍMETRO NO CONFIABLE</text>
+          <text x="40" y="85" fill="#F3F5F7" font-size="14" font-weight="bold" font-family="'General Sans', sans-serif">Canales Públicos</text>
+          <text x="40" y="110" fill="#94A3B8" font-size="12" font-family="'General Sans', sans-serif">&bull; WhatsApp / Telegram</text>
+          <text x="40" y="130" fill="#94A3B8" font-size="12" font-family="'General Sans', sans-serif">&bull; Móviles personales y BYOD</text>
+          <text x="40" y="150" fill="#EF4444" font-size="11" font-family="'JetBrains Mono', monospace">&cross; Riesgo de fuga PII / Shadow IT</text>
+
+          <!-- Flecha de Entrada -->
+          <line x1="310" y1="100" x2="380" y2="100" stroke="#5FD3B8" stroke-width="2.5" stroke-dasharray="4 4" />
+
+          <!-- Zona 2: Capa de Gobernanza VARNATIR -->
+          <rect x="390" y="20" width="300" height="160" rx="16" fill="#141C29" stroke="#5FD3B8" stroke-width="2" />
+          <text x="410" y="52" fill="#5FD3B8" font-size="11" font-weight="bold" font-family="'JetBrains Mono', monospace">CAPA DE GOBERNANZA VARNATIR</text>
+          <text x="410" y="78" fill="#F3F5F7" font-size="15" font-weight="bold" font-family="'General Sans', sans-serif">Aislamiento Criptográfico</text>
+          <text x="410" y="104" fill="#5FD3B8" font-size="12" font-family="'JetBrains Mono', monospace">&check; DLP &amp; Descarte PII (&lt;3ms)</text>
+          <text x="410" y="124" fill="#5FD3B8" font-size="12" font-family="'JetBrains Mono', monospace">&check; Claves BYOK cliente en HSM</text>
+          <text x="410" y="144" fill="#5FD3B8" font-size="12" font-family="'JetBrains Mono', monospace">&check; Sellado de tiempo y Hash ENS</text>
+          <text x="410" y="164" fill="#94A3B8" font-size="11" font-family="'General Sans', sans-serif">Unidad de segregación estricta</text>
+
+          <!-- Flecha de Salida Segura -->
+          <line x1="700" y1="100" x2="770" y2="100" stroke="#5FD3B8" stroke-width="2.5" />
+
+          <!-- Zona 3: Perímetro Seguro Corporativo -->
+          <rect x="780" y="30" width="260" height="140" rx="14" fill="#0E121A" stroke="rgba(16,185,129,0.4)" stroke-width="1.5" />
+          <text x="800" y="60" fill="#10B981" font-size="11" font-weight="bold" font-family="'JetBrains Mono', monospace">PERÍMETRO BLINDADO</text>
+          <text x="800" y="85" fill="#F3F5F7" font-size="14" font-weight="bold" font-family="'General Sans', sans-serif">Core Corporativo</text>
+          <text x="800" y="110" fill="#94A3B8" font-size="12" font-family="'General Sans', sans-serif">&bull; CRM / ERP Core Bancario</text>
+          <text x="800" y="130" fill="#94A3B8" font-size="12" font-family="'General Sans', sans-serif">&bull; Modelos LLM Privados</text>
+          <text x="800" y="150" fill="#10B981" font-size="11" font-family="'JetBrains Mono', monospace">&check; Datos 100% anonimizados*</text>
+        </svg>
+      </div>
+
+      <div class="arch-inner">
+        <div>
+          <div class="ciso-features-list">
+            <div class="ciso-feature-item">
+              <span class="ciso-feature-num">01</span>
+              <div>
+                <strong>Anonimización Previa al LLM (*)</strong>
+                <p>El modelo de inteligencia artificial nunca procesa DNI, cuentas bancarias, tarjetas o datos médicos en claro. La tokenización se ejecuta en memoria antes de la llamada de inferencia.</p>
+              </div>
+            </div>
+
+            <div class="ciso-feature-item">
+              <span class="ciso-feature-num">02</span>
+              <div>
+                <strong>Coexistencia Dual sin MDM Intrusivo</strong>
+                <p>El comercial opera desde el WhatsApp de su dispositivo móvil sin necesidad de perfiles MDM invasivos que vulneren la privacidad de sus conversaciones personales.</p>
+              </div>
+            </div>
+
+            <div class="ciso-feature-item">
+              <span class="ciso-feature-num">03</span>
+              <div>
+                <strong>Aislamiento por Organización y Claves BYOK</strong>
+                <p>Cada empresa dispone de un tenant estrictamente aislado criptográficamente. Las claves de cifrado permanecen en los HSM del cliente (Bring Your Own Key).</p>
+              </div>
+            </div>
+
+            <div class="ciso-feature-item">
+              <span class="ciso-feature-num">04</span>
+              <div>
+                <strong>Gobernanza Conforme al ENS Media y DORA</strong>
+                <p>Diseñado para superar auditorías de resiliencia operativa digital financiera (DORA) y exigencias de seguridad de la información de las Administraciones Públicas españolas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal animada -->
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dots-wrap">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+            </div>
+            <span class="terminal-title">varnatir-pii-engine · v2.3.1</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-prompt">$</span> pii-gate inspect --stream=wa-gw-01</div>
+            <div><span class="t-dim">[14:02:41.102]</span> <span class="t-ok">HOOK</span> Intercepción de paquete entrante (WhatsApp)</div>
+            <div><span class="t-dim">[14:02:41.103]</span> <span class="t-warn-c">DETECT</span> DNI: 48****21B · IBAN: ES91****4012 detectados</div>
+            <div><span class="t-dim">[14:02:41.104]</span> <span class="t-ok">DLP</span> Anonimización ejecutada &rarr; Tokens: [PII_DNI_01], [PII_IBAN_01]</div>
+            <div><span class="t-dim">[14:02:41.105]</span> <span class="t-ok">LLM_GATE</span> Payload sanitizado enviado a Claude 3.5 Sonnet</div>
+            <div><span class="t-dim">[14:02:41.106]</span> <span class="t-ok">SEAL</span> Hash SHA-256 generado y custodiado en Vault</div>
+            <div><span class="t-dim">[14:02:41.107]</span> <span class="t-ok">STATUS</span> Transacción completada en <span class="text-accent font-mono">2.8ms</span> <span class="terminal-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nota al Pie Preceptiva (Mandatoria por Corpus D-25) -->
+      <div style="margin-top: 24px; padding: 14px 20px; background: rgba(255, 255, 255, 0.02); border-left: 2px solid var(--accent); border-radius: 4px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">
+        * No expone PII. Datos anonimizados antes de llegar al modelo. La clave y la custodia permanecen bajo el control de tu organización.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 6: PRICING (ACCESO SIN BARRERAS) -->
+  <section class="section-container bg-surface-alt" id="pricing">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-line"></span>
+          <span class="section-eyebrow-text">ACCESO SIN BARRERAS</span>
+        </div>
+        <h2 class="section-h2-epic">Gobernanza accesible para cualquier organización</h2>
+        <p class="section-lead" style="margin-left: auto; margin-right: auto;">
+          Desarmamos el monopolio del DCGA inaccesible. No necesitas un presupuesto de banca de inversión de Wall Street para operar con rigor.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plan 1 -->
+        <div class="pricing-card">
+          <div class="pricing-badge">Early Adopters</div>
+          <h3>Starter Flujo</h3>
+          <p class="pricing-desc">Para organizaciones ágiles que quieren desbloquear su primer flujo crítico en WhatsApp con total garantía.</p>
+          <div class="pricing-price">Piloto 48h</div>
+          <ul class="pricing-features">
+            <li><span class="check">&check;</span> Coexistencia en número corporativo</li>
+            <li><span class="check">&check;</span> Intervención y moderación en origen (&lt; 3ms)</li>
+            <li><span class="check">&check;</span> Modelo de conversación propio</li>
+            <li><span class="check">&check;</span> Soporte técnico directo con ingeniería</li>
+          </ul>
+          <button class="btn btn-secondary btn-block" onclick="openModal('Starter Flujo')">Empezar por un flujo</button>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge popular">Recomendado</div>
+          <h3>Enterprise &amp; Gov</h3>
+          <p class="pricing-desc">Para empresas e instituciones con múltiples flujos transaccionales y requisitos estrictos de ENS / DORA.</p>
+          <div class="pricing-price">Escalable</div>
+          <ul class="pricing-features">
+            <li><span class="check">&check;</span> Todos los flujos y canales homologados</li>
+            <li><span class="check">&check;</span> IA productiva con anonimización pre-LLM*</li>
+            <li><span class="check">&check;</span> Diseñado conforme al ENS Media y DORA</li>
+            <li><span class="check">&check;</span> Integración API-First con CRM/ERP core</li>
+            <li><span class="check">&check;</span> Salto automatizado a sala acotada efímera</li>
+          </ul>
+          <button class="btn btn-primary btn-block" onclick="openModal('Enterprise & Gov')">Solicitar sesión estratégica</button>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="pricing-card">
+          <div class="pricing-badge">Misión Crítica</div>
+          <h3>Dedicated / On-Prem</h3>
+          <p class="pricing-desc">Para fuerzas de seguridad, defensa o infraestructuras críticas que exigen custodia estricta de claves.</p>
+          <div class="pricing-price">A Medida</div>
+          <ul class="pricing-features">
+            <li><span class="check">&check;</span> Despliegue en nube dedicada o PaaS propio</li>
+            <li><span class="check">&check;</span> Custodia estricta de llaves criptográficas (BYOK)</li>
+            <li><span class="check">&check;</span> Soporte para misión crítica táctica 24/7</li>
+            <li><span class="check">&check;</span> SLA garantizado y auditoría forense presencial</li>
+          </ul>
+          <button class="btn btn-secondary btn-block" onclick="openModal('Dedicated / On-Prem')">Contactar con Ingeniería</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 7: CÁTEDRA CBC-UV (RESPALDO CIENTÍFICO) -->
+  <section class="section-container" id="catedra">
+    <div class="container">
+      <div class="catedra-box">
+        <span class="catedra-badge">RESPALDO CIENTÍFICO Y ACADÉMICO</span>
+        <h3 class="catedra-title">Cátedra de Negocio Conversacional (CBC-UV)</h3>
+        <p class="catedra-desc">
+          VARNATIR no nace de una tendencia de marketing, sino del rigor metodológico de la <strong>Tesis CIBEC 2023</strong> y la investigación continuada en la Universidad de Valencia.
+        </p>
+        <div class="catedra-quote">
+          <blockquote>
+            «Las organizaciones ya mantienen conversaciones críticas por canales de mensajería de consumo, realizan transacciones por ellos y ejecutan procesos de negocio en su interior, con permiso o sin él. Si la conversación que sostiene esas tres cosas viaja por un canal de mensajería, ese canal es un sistema de misión crítica, no un canal de marketing.»
+          </blockquote>
+          <cite>— D. José Pérez, Director de la Cátedra de Negocio Conversacional CBC-UV · Ponencia CIBEC 2023</cite>
+        </div>
+        <div style="margin-top: 28px;">
+          <a href="catedra.html" class="btn btn-secondary">Ver investigación y memoria académica &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 8: CIERRE Y CONVERSIÓN (TARGETING DPO / COMPLIANCE) -->
+  <section class="cta-banner-section" id="contacto">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="cta-tag">ACCIÓN INMEDIATA</span>
+        <h2 class="cta-h2">
+          Empieza por un flujo.<br>
+          <span class="text-gradient">El que tu DPO y tu Comité de Compliance llevan meses frenando.</span>
+        </h2>
+        <p class="cta-sub">
+          No necesitas migrar toda tu organización mañana. Diseñamos un entorno piloto controlado y auditado para tu caso más sensible en menos de 48 horas.
+        </p>
+        <div class="cta-actions">
+          <button class="btn btn-primary btn-lg" id="footer-cta-btn" onclick="openModal()">Desbloquear un flujo ahora</button>
+          <a href="mailto:info@varnatir.com" class="btn btn-secondary btn-lg">Hablar con un arquitecto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="VARNATIR">
+            <svg class="brand-isotipo" viewBox="0 0 145.17 123.8" width="30" height="26" aria-hidden="true">
+              <path fill="url(#v-iso-hdr-es)" d="m35.3,67.03l10.48,24.47.33.76c.11.26.22.51.31.7l.58,1.26c.39.84.86,1.64,1.31,2.45.51.78.96,1.59,1.54,2.33.28.37.54.76.83,1.13l.9,1.08c2.41,2.89,5.41,5.31,8.69,7.32,3.31,1.98,6.97,3.43,10.8,4.39,3.83.96,7.88,1.33,11.93,1.26,8.14-.17,16.39-2.34,24.26-5.61,3.97-1.62,7.64-3.52,11.16-5.86,3.51-2.32,6.73-5.07,9.66-8.11,5.8-6.12,10.3-13.63,12.51-21.88,2.24-8.22,2.17-17.18-.76-25.37-.73-2.02-1.64-4.06-2.51-6.1l-2.62-6.12-5.24-12.24,6.09,11.84,3.04,5.92c1.01,1.97,2.05,3.92,2.98,6.01,3.67,8.33,4.47,17.88,2.67,26.91-1.76,9.07-6.05,17.59-11.95,24.76-2.98,3.57-6.33,6.86-10.03,9.7-3.68,2.85-7.76,5.34-11.88,7.36-8.22,4.1-17.22,7.25-26.83,8.14-4.8.42-9.67.33-14.54-.51-4.85-.84-9.65-2.35-14.13-4.61-4.46-2.3-8.68-5.24-12.25-8.91l-1.33-1.39c-.43-.47-.83-.97-1.25-1.46-.85-.96-1.58-2.03-2.35-3.06-.71-1.07-1.43-2.15-2.07-3.27l-.94-1.7-.42-.79-.38-.74-12.18-23.67,13.57-6.39Z"/>
+              <path fill="url(#v-iso-hdr-es-rev)" d="m109.87,56.77l-10.48-24.47-.33-.76c-.11-.26-.22-.51-.31-.7l-.58-1.26c-.39-.84-.86-1.64-1.31-2.45-.51-.78-.96-1.59-1.54-2.33-.28-.37-.54-.76-.83-1.13l-.9-1.08c-2.41-2.89-5.41-5.31-8.69-7.32-3.31-1.98-6.97-3.43-10.8-4.39-3.83-.96-7.88-1.33-11.93-1.26-8.14.17-16.39,2.34-24.26,5.61-3.97,1.62-7.64,3.52-11.16,5.86-3.51,2.32-6.73,5.07-9.66,8.11-5.8,6.12-10.3,13.63-12.52,21.88-2.24,8.22-2.17,17.18.76,25.37.73,2.02,1.64,4.06,2.51,6.1l2.62,6.12,5.24,12.24-6.09-11.84-3.04-5.92c-1.01-1.97-2.05-3.92-2.98-6.01C-.07,68.8-.88,59.24.92,50.21c1.76-9.07,6.05-17.59,11.95-24.76,2.98-3.57,6.33-6.86,10.03-9.7,3.68-2.85,7.76-5.34,11.88-7.36C43,4.29,52,1.14,61.61.25c4.8-.42,9.67-.33,14.54.51,4.85.84,9.65,2.35,14.13,4.61,4.46,2.3,8.68,5.24,12.25,8.91l1.33,1.39c.43.47.83.97,1.25,1.46.85.96,1.58,2.03,2.35,3.06.71,1.07,1.43,2.15,2.07,3.27l.94,1.7.42.79.38.74,12.18,23.67-13.57,6.39Z"/>
+            </svg>
+            <span class="logo-text">VARNATIR</span>
+          </a>
+          <p>
+            <strong>IA productiva. Dato gobernado.</strong><br />
+            Plataforma de gobernanza conversacional en tiempo real. Diseñada para auditar, anonimizar y proteger flujos sensibles sin fricción de adopción. Partner Oficial de Meta.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Plataforma</h5>
+          <div class="footer-links">
+            <a href="solution.html">Solución &amp; Arquitectura</a>
+            <a href="ia.html">IA &amp; Soberanía del Dato</a>
+            <a href="compliance.html">Compliance &amp; ENS Media</a>
+            <a href="canales.html">Canales Soportados</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Industrias</h5>
+          <div class="footer-links">
+            <a href="../industries-enterprise.html">Banca &amp; Seguros</a>
+            <a href="../industries-govtech.html">Administración Pública</a>
+            <a href="../industries-defensa.html">Defensa &amp; Seguridad</a>
+            <a href="industries.html">Todos los Casos de Uso</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Investigación &amp; Acceso</h5>
+          <div class="footer-links">
+            <a href="catedra.html">Cátedra CBC-UV</a>
+            <a href="about.html">Sobre el Modelo Propio</a>
+            <a href="pricing.html">Modelos de Acceso</a>
+            <a href="solution.html#api">Documentación API</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 VARNATIR. Todos los derechos reservados.</div>
+        <div class="footer-legal">
+          <a href="compliance.html#aviso-legal">Aviso Legal</a>
+          <span>&middot;</span>
+          <a href="compliance.html#privacidad">Privacidad &amp; RGPD</a>
+          <span>&middot;</span>
+          <a href="../compliance.html#cookies">Política de Cookies</a>
+          <span>&middot;</span>
+          <span>Confidencial &middot; noindex, nofollow</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: DESBLOQUEAR UN FLUJO -->
+  <div class="modal-overlay" id="cta-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar ventana">&times;</button>
+      <span class="modal-kicker">PILOTO ACOTADO · 48 HORAS</span>
+      <h3>Desbloquear un flujo sensible</h3>
+      <p>Cuéntanos qué caso de uso está bloqueado por seguridad o compliance en tu empresa. Diseñamos un entorno controlado en 48 horas.</p>
+
+      <form id="pilot-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="form-name">NOMBRE Y APELLIDOS</label>
+          <input type="text" id="form-name" required placeholder="Ej. Carlos Mendoza" />
+        </div>
+        <div class="form-group">
+          <label for="form-email">EMAIL CORPORATIVO</label>
+          <input type="email" id="form-email" required placeholder="carlos@tuempresa.com" />
+        </div>
+        <div class="form-group">
+          <label for="form-company">EMPRESA / ORGANIZACIÓN</label>
+          <input type="text" id="form-company" required placeholder="Nombre de la entidad" />
+        </div>
+        <div class="form-group">
+          <label for="form-sector">SECTOR REGULADO</label>
+          <select id="form-sector">
+            <option value="banca">Banca &amp; Servicios Financieros</option>
+            <option value="seguros">Seguros &amp; Peritajes</option>
+            <option value="salud">Salud &amp; Clínicas</option>
+            <option value="govtech">Administración Pública (AAPP)</option>
+            <option value="defensa">Defensa &amp; Seguridad del Estado</option>
+            <option value="retail">Retail Transaccional</option>
+            <option value="otro">Otro sector</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="form-case">FLUJO A DESBLOQUEAR O PLAN DE INTERÉS</label>
+          <input type="text" id="form-case" placeholder="Ej. Aprobación de créditos por WhatsApp" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-btn" style="margin-top: 18px;">
+          Solicitar Perímetro Piloto
+        </button>
+        <div class="form-note">
+          &check; Sin instalación de apps &middot; Sin compromiso &middot; Acuerdo de confidencialidad previo (NDA)
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../app.js"></script>
+</body>
+</html>

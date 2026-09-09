@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initHeaderScroll();
   initScrollReveal();
-  initHeroCanvas();
-  initH1Switcher();
+  initHeroReel();
+  initLangSwitcher();
   initComparisonTabs();
   initIndustryTabs();
   initSwiper();
@@ -112,103 +112,233 @@ function initScrollReveal() {
 }
 
 /* --------------------------------------------------------------------------
-   4. Hero Dynamic Canvas (Subtle Particle Mesh / Constellation)
+   4. Hero Reel Ambient Engine (60 FPS Procedural Data Streams & Telemetry)
    -------------------------------------------------------------------------- */
-function initHeroCanvas() {
-  const canvas = document.getElementById('hero-canvas');
+function initHeroReel() {
+  const canvas = document.getElementById('hero-reel-canvas');
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  let width = canvas.width = canvas.parentElement.offsetWidth;
-  let height = canvas.height = canvas.parentElement.offsetHeight;
+  let width, height;
+  let isVisible = true;
+  let animFrameId = null;
 
-  window.addEventListener('resize', () => {
+  function resize() {
     if (!canvas.parentElement) return;
     width = canvas.width = canvas.parentElement.offsetWidth;
     height = canvas.height = canvas.parentElement.offsetHeight;
-  });
+  }
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
 
-  const particleCount = Math.min(Math.floor(width / 32), 48);
-  const particles = [];
+  // Pause when offscreen for battery/GPU efficiency
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible && !animFrameId) {
+        animFrameId = requestAnimationFrame(animate);
+      }
+    }, { threshold: 0.05 });
+    observer.observe(canvas);
+  }
 
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
+  // Check prefers-reduced-motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Stream packets
+  const packetCount = Math.min(Math.floor(width / 24), 50);
+  const packets = [];
+  for (let i = 0; i < packetCount; i++) {
+    packets.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      radius: Math.random() * 1.5 + 0.5,
-      alpha: Math.random() * 0.4 + 0.15
+      speedX: (Math.random() - 0.2) * 1.6 + 0.6,
+      speedY: (Math.random() - 0.5) * 0.6,
+      length: Math.random() * 35 + 15,
+      radius: Math.random() * 1.8 + 0.8,
+      alpha: Math.random() * 0.6 + 0.2,
+      color: Math.random() > 0.5 ? '#5FD3B8' : (Math.random() > 0.5 ? '#A855F7' : '#237078')
     });
   }
 
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
+  // Interception nodes
+  const nodes = [
+    { x: 0.18, y: 0.32, label: 'WhatsApp Core' },
+    { x: 0.5, y: 0.5, label: 'Flight Control Active' },
+    { x: 0.82, y: 0.38, label: 'Enterprise LLM' },
+    { x: 0.5, y: 0.78, label: 'ENS Cryptographic Vault' }
+  ];
 
-    // Draw links
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+  let radarAngle = 0;
 
-        if (dist < 110) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(95, 211, 184, ${0.12 * (1 - dist / 110)})`;
-          ctx.lineWidth = 0.75;
-          ctx.stroke();
-        }
-      }
+  function animate(timestamp) {
+    if (!isVisible) {
+      animFrameId = null;
+      return;
     }
 
-    // Draw dots
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
+    ctx.clearRect(0, 0, width, height);
 
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
+    // 1. Dual Chromatic Brand Gradient (Teal to Purple Depth)
+    const grad = ctx.createRadialGradient(width * 0.38, height * 0.4, 20, width * 0.5, height * 0.45, width * 0.75);
+    grad.addColorStop(0, 'rgba(24, 83, 89, 0.32)');
+    grad.addColorStop(0.48, 'rgba(75, 20, 95, 0.22)');
+    grad.addColorStop(1, 'rgba(7, 9, 14, 0.96)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
 
+    // 2. Cryptographic Grid Lines
+    ctx.strokeStyle = 'rgba(95, 211, 184, 0.035)';
+    ctx.lineWidth = 1;
+    const gridSize = 48;
+    ctx.beginPath();
+    for (let x = 0; x < width; x += gridSize) {
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+    }
+    for (let y = 0; y < height; y += gridSize) {
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+    }
+    ctx.stroke();
+
+    // 3. Radar Sweeps
+    if (!prefersReduced) {
+      radarAngle += 0.012;
+    }
+    const cx = width * 0.5;
+    const cy = height * 0.48;
+    const maxRadius = Math.min(width, height) * 0.45;
+
+    ctx.strokeStyle = 'rgba(95, 211, 184, 0.06)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(cx, cy, maxRadius * 0.35, 0, Math.PI * 2);
+    ctx.arc(cx, cy, maxRadius * 0.7, 0, Math.PI * 2);
+    ctx.arc(cx, cy, maxRadius, 0, Math.PI * 2);
+    ctx.stroke();
+
+    if (!prefersReduced) {
+      const sweepGrad = ctx.createRadialGradient(cx, cy, 5, cx, cy, maxRadius);
+      sweepGrad.addColorStop(0, 'rgba(95, 211, 184, 0.12)');
+      sweepGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = sweepGrad;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(95, 211, 184, ${p.alpha})`;
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, maxRadius, radarAngle, radarAngle + 0.35);
+      ctx.closePath();
       ctx.fill();
     }
 
-    requestAnimationFrame(draw);
+    // 4. Data Packets in Flight
+    packets.forEach((p) => {
+      if (!prefersReduced) {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x > width + 40) p.x = -40;
+        if (p.y > height + 20) p.y = -20;
+        if (p.y < -20) p.y = height + 20;
+      }
+
+      // Beam trail
+      const beam = ctx.createLinearGradient(p.x - p.length, p.y, p.x, p.y);
+      beam.addColorStop(0, 'transparent');
+      beam.addColorStop(1, p.color);
+
+      ctx.strokeStyle = beam;
+      ctx.lineWidth = p.radius;
+      ctx.beginPath();
+      ctx.moveTo(p.x - p.length, p.y);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+
+      // Glowing head
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius * 0.75, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // 5. Interception Nodes & Links
+    nodes.forEach((n, idx) => {
+      const nx = n.x * width;
+      const ny = n.y * height;
+
+      if (idx !== 1) {
+        const centerNodeX = nodes[1].x * width;
+        const centerNodeY = nodes[1].y * height;
+        ctx.strokeStyle = 'rgba(95, 211, 184, 0.14)';
+        ctx.setLineDash([4, 6]);
+        ctx.beginPath();
+        ctx.moveTo(nx, ny);
+        ctx.lineTo(centerNodeX, centerNodeY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      const pulse = (Math.sin(timestamp * 0.003 + idx) + 1) * 6 + 4;
+      ctx.strokeStyle = idx === 1 ? 'rgba(95, 211, 184, 0.55)' : 'rgba(56, 189, 248, 0.3)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(nx, ny, pulse, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = idx === 1 ? '#5FD3B8' : '#38BDF8';
+      ctx.beginPath();
+      ctx.arc(nx, ny, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    animFrameId = requestAnimationFrame(animate);
   }
 
-  requestAnimationFrame(draw);
+  animFrameId = requestAnimationFrame(animate);
 }
 
 /* --------------------------------------------------------------------------
-   5. H1 Switcher (Founder Tool · Opción B Activa por Defecto)
+   5. Language Switcher (EN default · ES localized with path handling)
    -------------------------------------------------------------------------- */
-function initH1Switcher() {
-  const btnA = document.getElementById('toggle-opt-a');
-  const btnB = document.getElementById('toggle-opt-b');
-  const titleA = document.getElementById('hero-title-a');
-  const titleB = document.getElementById('hero-title-b');
+function initLangSwitcher() {
+  const switchers = document.querySelectorAll('.lang-switcher');
+  if (!switchers.length) return;
 
-  if (!btnA || !btnB || !titleA || !titleB) return;
+  const currentPath = window.location.pathname;
+  const isSpanish = currentPath.includes('/es/') || currentPath.endsWith('/es');
 
-  btnA.addEventListener('click', () => {
-    btnA.classList.add('active');
-    btnB.classList.remove('active');
-    titleA.classList.add('active');
-    titleB.classList.remove('active');
-  });
+  switchers.forEach((sw) => {
+    const enBtn = sw.querySelector('[data-lang="en"]');
+    const esBtn = sw.querySelector('[data-lang="es"]');
 
-  btnB.addEventListener('click', () => {
-    btnB.classList.add('active');
-    btnA.classList.remove('active');
-    titleB.classList.add('active');
-    titleA.classList.remove('active');
+    if (isSpanish) {
+      if (esBtn) esBtn.classList.add('active');
+      if (enBtn) enBtn.classList.remove('active');
+    } else {
+      if (enBtn) enBtn.classList.add('active');
+      if (esBtn) esBtn.classList.remove('active');
+    }
+
+    if (enBtn) {
+      enBtn.addEventListener('click', (e) => {
+        localStorage.setItem('varnatir_lang', 'en');
+        if (isSpanish) {
+          e.preventDefault();
+          const target = enBtn.getAttribute('href') || '../index.html';
+          window.location.href = target;
+        }
+      });
+    }
+
+    if (esBtn) {
+      esBtn.addEventListener('click', (e) => {
+        localStorage.setItem('varnatir_lang', 'es');
+        if (!isSpanish) {
+          e.preventDefault();
+          const target = esBtn.getAttribute('href') || 'es/index.html';
+          window.location.href = target;
+        }
+      });
+    }
   });
 }
 
