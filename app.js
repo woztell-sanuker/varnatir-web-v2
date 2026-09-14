@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VARNATIR · Lógica Interactiva y Micro-interacciones de Alto Calibre (Estilo WAM)
+   VALNATIR · Lógica Interactiva y Micro-interacciones de Alto Calibre (Estilo WAM)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -320,7 +320,7 @@ function initLangSwitcher() {
 
     if (enBtn) {
       enBtn.addEventListener('click', (e) => {
-        localStorage.setItem('varnatir_lang', 'en');
+        localStorage.setItem('valnatir_lang', 'en');
         if (!isSpanish) {
           e.preventDefault();
           return;
@@ -338,7 +338,7 @@ function initLangSwitcher() {
 
     if (esBtn) {
       esBtn.addEventListener('click', (e) => {
-        localStorage.setItem('varnatir_lang', 'es');
+        localStorage.setItem('valnatir_lang', 'es');
         if (isSpanish) {
           e.preventDefault();
           return;
@@ -363,23 +363,23 @@ function initLangSwitcher() {
    6. Comparativa Interactiva (Control de Vuelo vs. Caja Negra)
    -------------------------------------------------------------------------- */
 function toggleComparison(type) {
-  const tabVarnatir = document.getElementById('tab-varnatir');
+  const tabValnatir = document.getElementById('tab-valnatir');
   const tabLegacy = document.getElementById('tab-legacy');
-  const panelVarnatir = document.getElementById('panel-varnatir');
+  const panelValnatir = document.getElementById('panel-valnatir');
   const panelLegacy = document.getElementById('panel-legacy');
 
-  if (!tabVarnatir || !tabLegacy || !panelVarnatir || !panelLegacy) return;
+  if (!tabValnatir || !tabLegacy || !panelValnatir || !panelLegacy) return;
 
-  if (type === 'varnatir') {
-    tabVarnatir.classList.add('active');
+  if (type === 'valnatir') {
+    tabValnatir.classList.add('active');
     tabLegacy.classList.remove('active');
-    panelVarnatir.classList.add('active');
+    panelValnatir.classList.add('active');
     panelLegacy.classList.remove('active');
   } else {
     tabLegacy.classList.add('active');
-    tabVarnatir.classList.remove('active');
+    tabValnatir.classList.remove('active');
     panelLegacy.classList.add('active');
-    panelVarnatir.classList.remove('active');
+    panelValnatir.classList.remove('active');
   }
 }
 window.toggleComparison = toggleComparison;
@@ -556,7 +556,7 @@ function handleFormSubmit(e) {
           <div style="font-size: 3rem; margin-bottom: 16px; color: var(--accent);">✓</div>
           <h3 style="font-size: 1.8rem; margin-bottom: 12px; color: var(--text);">Solicitud de Piloto Recibida</h3>
           <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 24px;">
-            Un arquitecto de soluciones de VARNATIR contactará contigo en menos de 24 horas para definir el perímetro acotado de tu flujo sensible.
+            Un arquitecto de soluciones de VALNATIR contactará contigo en menos de 24 horas para definir el perímetro acotado de tu flujo sensible.
           </p>
           <button class="btn btn-primary" onclick="location.reload()">Volver a la web</button>
         </div>
